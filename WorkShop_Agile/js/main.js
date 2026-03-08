@@ -8,6 +8,14 @@ const AppState = {
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we are on the top-up page
     if (document.getElementById('screen-topup')) {
+        const savedAmount = localStorage.getItem('lastTopupAmount');
+        if (savedAmount) {
+            const inputField = document.getElementById('topup-amount-input');
+            if (inputField) {
+                inputField.value = savedAmount;
+                AppState.selectedAmount = parseFloat(savedAmount) || 0;
+            }
+        }
         updateTopupSummary();
     }
 });
