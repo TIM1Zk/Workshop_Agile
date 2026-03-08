@@ -488,8 +488,21 @@ body {
 .toast-container {
   position: fixed;
   top: 32px;
-  right: 32px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  pointer-events: none;
+}
+
+.input-error {
+  border-color: var(--error) !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1) !important;
 }
 
 /* Registration Steps */

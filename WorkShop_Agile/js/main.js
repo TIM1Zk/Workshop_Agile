@@ -13,12 +13,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- Auth Actions ---
+function validatePhone(phone) {
+    if (!phone) return 'ต้องไม่เป็นค่าว่าง';
+    if (/\s/.test(phone)) return 'ต้องไม่มีเว้นวรรค หรือช่องว่าง';
+    if (!/^[0-9]+$/.test(phone)) return 'ต้องเป็นตัวเลขเท่านั้น';
+    if (phone.length !== 10) return 'ต้องมีความยาว 10 ตัวอักษร';
+    return null;
+}
+
+function validatePassword(pass) {
+    if (!pass) return 'ต้องไม่เป็นค่าว่าง';
+    if (/\s/.test(pass)) return 'ต้องไม่มีเว้นวรรค หรือช่องว่าง';
+    if (pass.length < 8 || pass.length > 16) return 'มีความยาวตั้งแต่ 8 - 16 ตัวอักษร';
+    if (!/^[a-zA-Z0-9!#_\.]+$/.test(pass)) return 'ต้องเป็นอักษรอังกฤษตัวเลข รวมอักขระพิเศษ[!#_.]';
+    return null;
+}
+
+function clearErrors() {
+    const errorInputs = document.querySelectorAll('.input-error');
+    errorInputs.forEach(input => input.classList.remove('input-error'));
+}
+
 function doLogin() {
-    const phone = document.getElementById('loginPhone').value;
-    const pass = document.getElementById('loginPass').value;
+    clearErrors();
+    const phoneInput = document.getElementById('loginPhone');
+    const passInput = document.getElementById('loginPass');
+    const phone = phoneInput.value;
+    const pass = passInput.value;
     
-    if (!phone || !pass) {
-        showToast('กรุณากรอกข้อมูลให้ครบถ้วน', 'error');
+    const phoneError = validatePhone(phone);
+    if (phoneError) {
+        phoneInput.classList.add('input-error');
+        showToast('เบอร์มือถือ: ' + phoneError, 'error');
+        return;
+    }
+    
+    const passError = validatePassword(pass);
+    if (passError) {
+        passInput.classList.add('input-error');
+        showToast('รหัสผ่าน: ' + passError, 'error');
         return;
     }
     
@@ -32,13 +65,76 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-function updateProfile() {
-    const name = document.getElementById('editName').value;
-    const email = document.getElementById('editEmail').value;
-    const phone = document.getElementById('editPhone').value;
+function validateName(name) {
+    if (!name || !name.trim()) return 'ต้องไม่เป็นค่าว่าง';
+    if (name.length < 2 || name.length > 50) return 'ต้องมีความยาวตั้งแต่ 2 - 50 ตัวอักษร';
+    if (!/^[a-zA-Zก-๙\s]+$/.test(name)) return 'ต้องเป็นอักษรภาษาไทยหรืออังกฤษเท่านั้น';
+    return null;
+}
 
-    if (!name || !phone) {
-        showToast('กรุณากรอกข้อมูลที่จำเป็นให้ครบถ้วน', 'error');
+function validateEmail(email) {
+    if (!email || !email.trim()) return 'ต้องไม่เป็นค่าว่าง';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return 'ต้องเป็นรูปแบบมาตรฐาน email ที่ถูกต้อง';
+    return null;
+}
+
+function validateGender(gender) {
+    if (!gender) return 'ต้องเลือกเพศอย่างน้อย 1 เพศ';
+    return null;
+}
+
+function validateAddress(address) {
+    if (address && address.length > 100) return 'ห้ามมีตัวอักษรเกิน 100';
+    return null;
+}
+
+function updateProfile() {
+    clearErrors();
+    const nameInput = document.getElementById('editName');
+    const emailInput = document.getElementById('editEmail');
+    const phoneInput = document.getElementById('editPhone');
+    const genderInput = document.getElementById('editGender');
+    const addressInput = document.getElementById('editAddress');
+
+    const name = nameInput ? nameInput.value : '';
+    const email = emailInput ? emailInput.value : '';
+    const phone = phoneInput ? phoneInput.value : '';
+    const gender = genderInput ? genderInput.value : '';
+    const address = addressInput ? addressInput.value : '';
+
+    const nameError = validateName(name);
+    if (nameError) {
+        if (nameInput) nameInput.classList.add('input-error');
+        showToast('ชื่อ-นามสกุล: ' + nameError, 'error');
+        return;
+    }
+
+    const phoneError = validatePhone(phone);
+    if (phoneError) {
+        if (phoneInput) phoneInput.classList.add('input-error');
+        showToast('เบอร์มือถือ: ' + phoneError, 'error');
+        return;
+    }
+
+    const emailError = validateEmail(email);
+    if (emailError) {
+        if (emailInput) emailInput.classList.add('input-error');
+        showToast('อีเมล: ' + emailError, 'error');
+        return;
+    }
+
+    const genderError = validateGender(gender);
+    if (genderError) {
+        if (genderInput) genderInput.classList.add('input-error');
+        showToast('เพศ: ' + genderError, 'error');
+        return;
+    }
+
+    const addressError = validateAddress(address);
+    if (addressError) {
+        if (addressInput) addressInput.classList.add('input-error');
+        showToast('ที่อยู่ตั้งต้น: ' + addressError, 'error');
         return;
     }
 
@@ -101,7 +197,7 @@ function updateTopupSummary() {
     
     if (summaryAmount) {
         summaryAmount.textContent = `฿${AppState.selectedAmount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
-        summaryAmount.style.color = (AppState.selectedAmount > 0 && AppState.selectedAmount < 300) ? 'var(--error)' : 'white';
+        summaryAmount.style.color = (AppState.selectedAmount > 0 && AppState.selectedAmount < 300) ? 'var(--error)' : '#000000';
     }
 }
 
