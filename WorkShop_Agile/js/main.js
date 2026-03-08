@@ -1,6 +1,6 @@
 const AppState = {
     balance: 1250.00,
-    selectedAmount: 500,
+    selectedAmount: 0,
     paymentMethod: 'promptpay'
 };
 
@@ -68,15 +68,49 @@ function updateSummary(val) {
 }
 
 function updateTopupSummary() {
-    const summaryTotal = document.getElementById('summary-total');
+    const summaryBalance = document.getElementById('summary-balance-display');
+    const summaryTotal = document.getElementById('summary-total-display');
     const summaryAmount = document.getElementById('summary-amount-display');
-    if (summaryTotal) {
-        const total = AppState.balance + AppState.selectedAmount;
-        summaryTotal.textContent = `ยอดหลังเติมเงิน: ฿${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    const minAmountError = document.getElementById('min-amount-error');
+    const payButton = document.getElementById('pay-button');
+
+    const isValid = AppState.selectedAmount >= 300;
+
+    if (minAmountError) {
+        const isEntryInvalid = AppState.selectedAmount !== 0 && AppState.selectedAmount < 300;
+        minAmountError.style.display = isEntryInvalid ? 'block' : 'none';
+        
+        if (AppState.selectedAmount <= 0 && document.getElementById('topup-amount-input').value !== "") {
+            minAmountError.style.display = 'block';
+        }
     }
+
+    if (payButton) {
+        payButton.disabled = !isValid;
+    }
+
+    if (summaryBalance) {
+        summaryBalance.textContent = `฿${AppState.balance.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+    }
+    
+    if (summaryTotal) {
+        const total = AppState.balance + (isValid ? AppState.selectedAmount : 0);
+        summaryTotal.textContent = `฿${total.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        summaryTotal.parentElement.style.opacity = isValid ? '1' : '0.5';
+    }
+    
     if (summaryAmount) {
         summaryAmount.textContent = `฿${AppState.selectedAmount.toLocaleString(undefined, {minimumFractionDigits: 2})}`;
+        summaryAmount.style.color = (AppState.selectedAmount > 0 && AppState.selectedAmount < 300) ? 'var(--error)' : 'white';
     }
+}
+
+function goToPayment() {
+    if (AppState.selectedAmount < 300) return;
+    
+    // Pass the topup amount to next page
+    localStorage.setItem('lastTopupAmount', AppState.selectedAmount);
+    window.location.href = 'qrcode.html';
 }
 
 async function doTopup() {
