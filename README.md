@@ -4,11 +4,12 @@ SafeSeat is a state-of-the-art web application engineered to elevate the experie
 
 ## ✨ Highlights
 
-- **Premium Design Aesthetics**: Experience a modern UI featuring a sleek dark theme, glassmorphism, and fluid micro-animations for a truly high-end feel.
-- **Seamless Onboarding**: Quick and intuitive registration and login processes to get you started in seconds.
-- **Digital Wallet (SafeSeat Wallet)**: A robust system for managing balances and top-ups, integrated with PromptPay for effortless transactions.
-- **Comprehensive Vehicle Registry**: An elegant interface for managing your fleet, including detailed specifications and license plate data.
-- **Responsive & High Performance**: Optimized for various devices, ensuring a smooth experience whether on mobile or desktop.
+- **Sophisticated Aesthetics**: Experience a modern, professional UI featuring a crisp blue and white theme, glassmorphism effects, and fluid micro-animations.
+- **Intuitive User Journey**: Seamlessly navigate through a logical flow from landing to dashboard, with clear interactive elements.
+- **Robust JavaScript Integration**: Experience dynamic updates and real-time form validation for a secure and responsive feel.
+- **Lucide Iconography**: Integrated with Lucide Icons for a clean, consistent, and recognizable visual language.
+- **SafeSeat Wallet**: A premium digital wallet interface for managing balances and top-ups, featuring PromptPay integration.
+- **Advanced Vehicle Registry**: An elegant management system for your fleet, allowing for detailed specification tracking.
 
 ## 📁 Project Architecture
 
@@ -44,9 +45,10 @@ workshop/
 
 ## 🛠️ Technology Stack
 
-- **Foundational**: Semantic HTML5, CSS3 (Custom Properties), JavaScript (ES6+ Functional Patterns).
-- **Aesthetics**: Custom-tailored dark mode, Google Fonts integration (Kanit, Sarabun), and CSS-driven animations.
-- **Workflow**: Developed using Agile methodologies to ensure high-quality, iterative delivery.
+- **Foundational**: Semantic HTML5, CSS3 (Custom Properties & Flexbox/Grid Layouts).
+- **Interactivity**: Modern JavaScript (ES6+) with advanced form validation, local state management, and DOM manipulation.
+- **Aesthetics**: Custom-tailored blue/white theme, Google Fonts (Inter, Kanit, Sarabun), and Lucide Icons.
+- **Workflow**: Developed using Agile methodologies to ensure high-quality, iterative delivery and attention to detail.
 
 ## 🔒 Security & Privacy
 
