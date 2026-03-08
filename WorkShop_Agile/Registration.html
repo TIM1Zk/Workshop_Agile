@@ -47,15 +47,15 @@
 
     <main class="flex-grow flex items-center justify-center px-6 py-12">
         <div id="screen1" class="w-full max-w-xl transition-all duration-500">
-            <div class="text-center md:text-left mb-10">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Step 1 of 2</h1>
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">สร้างบัญชีของคุณ</h2>
+            <div class="text-left mb-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-1">Step 1 of 2</h1>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">สร้างบัญชีผู้ใช้ของคุณ</h2>
                 <p class="text-gray-500 text-lg leading-relaxed">
                     กรุณาป้อนหมายเลขโทรศัพท์มือถือของคุณเพื่อเริ่มต้นเราจะส่งรหัสยืนยันให้คุณเพื่อความปลอดภัยบัญชีของคุณ
                 </p>
             </div>
 
-            <div class="space-y-6">
+            <div class="space-y-[150px]">
                 <div class="text-left">
                     <label class="block text-gray-700 font-bold mb-3 text-lg">เบอร์โทรศัพท์มือถือ</label>
                     <input type="text" id="phoneInput" placeholder="0812345678" inputmode="numeric" maxlength="10"
@@ -65,15 +65,22 @@
                         หลัก)</p>
                 </div>
 
-                <button onclick="validateStep1()"
-                    class="w-full bg-[#1c1c1c] text-white font-bold py-5 rounded-2xl text-lg hover:bg-blue-600 hover:shadow-xl transform transition-all active:scale-[0.98]">
-                    ดำเนินการต่อ
+                <div>
+                    <h1 class="text-start text-gray-500 text-sm mb-6">
+                        เมื่อดำเนินการต่อหมายถึงคุณยอมรับ ข้อกำหนดการให้บริการและนโยบายส่วนตัวของเรา
+                    </h1>
+
+                    <button onclick="validateStep1()"
+                        class="w-full bg-[#1c1c1c] text-white font-bold py-5 rounded-2xl text-lg hover:bg-gray-800 hover:shadow-xl transform transition-all active:scale-[0.98]">
+                        ดำเนินการต่อ
+                    </button>
+                </div>
                 </button>
             </div>
         </div>
 
         <div id="screen2" class="hidden w-full max-w-3xl transition-all duration-500">
-            <div class="text-center md:text-left mb-10">
+            <div class="text-left mb-10">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Final Step</h1>
                 <h2 class="text-3xl font-bold text-gray-900 mb-4">ตั้งค่าโปรไฟล์ของคุณ</h2>
                 <p class="text-gray-500 text-lg">นี่เป็นเพียงรายละเอียดเพิ่มเติมเล็กน้อยที่จะช่วยให้คุณเดินทางปลอดภัย
@@ -108,8 +115,8 @@
                     <label class="block text-gray-700 font-bold text-lg">รหัสผ่าน</label>
                     <input type="password" id="password" placeholder="••••••••"
                         class="w-full border-2 border-gray-100 bg-gray-50 rounded-xl py-4 px-5 text-lg focus:outline-none focus:border-blue-400 focus:bg-white transition-all">
-                    <p id="passwordError" class="text-red-500 text-sm hidden">รหัสผ่านต้องมี 8-50
-                        ตัวอักษรเเละประกอบไปด้วยตัวอักษรภาษาอังกฤษ</p>
+                    <p id="passwordError" class="text-red-500 text-sm hidden">รหัสผ่านต้องมี 8 ตัวอักษรขึ้นไป
+                        พร้อมตัวเลขและอักขระพิเศษ (ห้ามมีช่องว่าง)</p>
                 </div>
             </div>
 
@@ -129,27 +136,24 @@
     </main>
 
     <script>
-        // Initialize Icons
         lucide.createIcons();
 
         const patterns = {
             phone: /^0[689]\d{8}$/,
-            email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
             name: /^[a-zA-Z\u0E00-\u0E7F\s]{3,50}$/,
-            password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,50}$/
+            password: /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[^\s]{8,}$/
         };
 
         function handleBack() {
             const s1 = document.getElementById('screen1');
             const s2 = document.getElementById('screen2');
 
-            // If screen 2 is visible, go back to screen 1
             if (s1.classList.contains('hidden')) {
                 toggleScreen();
             }
-            // If screen 1 is visible, go to login page
             else {
-                window.location.href = "login.html"; // Change to your actual login filename
+                window.location.href = "login.html";
             }
         }
 
@@ -209,9 +213,7 @@
 
             if (isValid) {
                 alert("ลงทะเบียนสำเร็จ!");
-                setTimeout(() => {
-                    window.location.href = "login.html";
-                }, 500);
+                window.location.href = "login.html";
             }
         }
     </script>

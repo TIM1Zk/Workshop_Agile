@@ -8,6 +8,14 @@ const AppState = {
 document.addEventListener('DOMContentLoaded', () => {
     // Check if we are on the top-up page
     if (document.getElementById('screen-topup')) {
+        const savedAmount = localStorage.getItem('lastTopupAmount');
+        if (savedAmount) {
+            const inputField = document.getElementById('topup-amount-input');
+            if (inputField) {
+                inputField.value = savedAmount;
+                AppState.selectedAmount = parseFloat(savedAmount) || 0;
+            }
+        }
         updateTopupSummary();
     }
 });
@@ -74,7 +82,8 @@ function validateName(name) {
 
 function validateEmail(email) {
     if (!email || !email.trim()) return 'ต้องไม่เป็นค่าว่าง';
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (/[ก-๙]/.test(email)) return 'ห้ามใช้ภาษาไทยในอีเมล (ใช้ได้เฉพาะภาษาอังกฤษ ตัวเลข และสัญลักษณ์)';
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) return 'ต้องเป็นรูปแบบมาตรฐาน email ที่ถูกต้อง';
     return null;
 }
@@ -206,7 +215,7 @@ function goToPayment() {
     
     // Pass the topup amount to next page
     localStorage.setItem('lastTopupAmount', AppState.selectedAmount);
-    window.location.href = 'qrcode.html';
+    window.location.href = `qrcode.html?amount=${AppState.selectedAmount}`;
 }
 
 async function doTopup() {
