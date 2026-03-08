@@ -108,7 +108,8 @@
                     <label class="block text-gray-700 font-bold text-lg">รหัสผ่าน</label>
                     <input type="password" id="password" placeholder="••••••••"
                         class="w-full border-2 border-gray-100 bg-gray-50 rounded-xl py-4 px-5 text-lg focus:outline-none focus:border-blue-400 focus:bg-white transition-all">
-                    <p id="passwordError" class="text-red-500 text-sm hidden">รหัสผ่านต้องมี 8 ตัวอักษรขึ้นไป</p>
+                    <p id="passwordError" class="text-red-500 text-sm hidden">รหัสผ่านต้องมี 8 ตัวขึ้นไป
+                        พร้อมตัวเลขและอักขระพิเศษ (ห้ามมีช่องว่าง)</p>
                 </div>
             </div>
 
@@ -135,20 +136,17 @@
             phone: /^0[689]\d{8}$/,
             email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
             name: /^[a-zA-Z\u0E00-\u0E7F\s]{3,50}$/,
-            password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+            password: /^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[^\s]{8,}$/
         };
-
         function handleBack() {
             const s1 = document.getElementById('screen1');
             const s2 = document.getElementById('screen2');
 
-            // If screen 2 is visible, go back to screen 1
             if (s1.classList.contains('hidden')) {
                 toggleScreen();
             }
-            // If screen 1 is visible, go to login page
             else {
-                window.location.href = "login.html"; // Change to your actual login filename
+                window.location.href = "login.html";
             }
         }
 
@@ -206,7 +204,10 @@
                 isValid = false;
             }
 
-            if (isValid) alert("ลงทะเบียนสำเร็จ!");
+            if (isValid) {
+                alert("ลงทะเบียนสำเร็จ!");
+                window.location.href = "login.html"; // Redirects to your login screen
+            }
         }
     </script>
 </body>
