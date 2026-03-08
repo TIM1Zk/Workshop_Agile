@@ -1,57 +1,59 @@
 # SafeSeat - Your Secure Travel Companion 🛡️
 
-SafeSeat is a modern web application designed to enhance the experience of vehicle owners and drivers. It provides a seamless platform for managing vehicle profiles, top-up wallets, and user accounts with a premium, responsive design.
+SafeSeat is a state-of-the-art web application engineered to elevate the experience of vehicle owners and drivers. It delivers a sophisticated and seamless platform for managing vehicle profiles, digital wallets, and user accounts, all wrapped in a high-end, responsive interface.
 
-## 🚀 Features
+## ✨ Highlights
 
-- **Multi-Page Application (MPA)**: Fast, standalone pages for better performance and direct access.
-- **Modern UI/UX**: Built with a sleek dark theme, glassmorphism, and smooth animations.
-- **Vehicle Management**: Easily add and manage your vehicle information, including license plates and gear specifications.
-- **SafeSeat Wallet**: A secure digital wallet for easy top-ups and balance management.
-- **PromptPay Integration**: Supports PromptPay QR code for convenient and safe transactions.
-- **User Profiles**: Manage your personal information and preferences with ease.
+- **Premium Design Aesthetics**: Experience a modern UI featuring a sleek dark theme, glassmorphism, and fluid micro-animations for a truly high-end feel.
+- **Seamless Onboarding**: Quick and intuitive registration and login processes to get you started in seconds.
+- **Digital Wallet (SafeSeat Wallet)**: A robust system for managing balances and top-ups, integrated with PromptPay for effortless transactions.
+- **Comprehensive Vehicle Registry**: An elegant interface for managing your fleet, including detailed specifications and license plate data.
+- **Responsive & High Performance**: Optimized for various devices, ensuring a smooth experience whether on mobile or desktop.
 
-## 📁 Project Structure
+## 📁 Project Architecture
+
+The core logic and assets are located within the `WorkShop_Agile` directory.
 
 ```text
 workshop/
-├── topup-page/             # Core application assets
-│   ├── css/                # Visual styling (styles.css)
-│   ├── js/                 # Application logic (main.js)
-│   ├── index.html          # Welcome & Branding
-│   ├── login.html          # Authentication
-│   ├── Registration.html   # User Onboarding
-│   ├── profile.html        # Dashboard & Overview
-│   ├── edit-profile.html   # Profile Management
-│   ├── topup.html          # Wallet Top-up System
-│   └── Add_new_car.html    # Vehicle Registration
-├── .gitignore              # Git exclusion rules
-└── README.md               # Project documentation
+├── WorkShop_Agile/         # Primary Application Directory
+│   ├── css/                # Visual Language (styles.css)
+│   ├── js/                 # Functional Logic (main.js)
+│   ├── index.html          # Dynamic Entry Point (Auto-redirect)
+│   ├── login.html          # Secure Authentication
+│   ├── Registration.html   # User Onboarding Flow
+│   ├── profile.html        # Account Dashboard
+│   ├── edit-profile.html   # Profile Customization
+│   ├── topup.html          # Wallet Management
+│   ├── qrcode.html         # PromptPay Transaction View
+│   └── Add_new_car.html    # Vehicle Registration Interface
+├── .gitignore              # Environment configuration
+└── README.md               # Main Documentation
 ```
 
-## 🛠️ Getting Started
+## 🚀 Experience it Personally
 
 1.  **Clone the Repository**:
     ```bash
     git clone https://github.com/TIM1Zk/Workshop_Agile.git
     ```
-2.  **Open the Project**:
-    Navigate to `workshop/topup-page/` and open `index.html` in any modern web browser.
-3.  **Local Access**:
-    No server is required! The application is designed to run directly from your local filesystem.
+2.  **Launch the App**:
+    Navigate to the root directory and open `WorkShop_Agile/index.html` in your favorite modern browser.
+3.  **Instant Access**:
+    No server environment is necessary. The application is designed to be fully functional directly from the local filesystem.
 
-## 💻 Technologies Used
+## 🛠️ Technology Stack
 
-- **Frontend**: HTML5, CSS3 (Vanilla), JavaScript (ES6+).
-- **Typography**: Google Fonts (Kanit, Sarabun).
-- **Design Principles**: Responsive Layouts, Dark Mode, Micro-animations.
+- **Foundational**: Semantic HTML5, CSS3 (Custom Properties), JavaScript (ES6+ Functional Patterns).
+- **Aesthetics**: Custom-tailored dark mode, Google Fonts integration (Kanit, Sarabun), and CSS-driven animations.
+- **Workflow**: Developed using Agile methodologies to ensure high-quality, iterative delivery.
 
-## 🔒 Security
+## 🔒 Security & Privacy
 
-SafeSeat prioritizes user data through:
-- Local state management for privacy.
-- Secure design patterns for wallet transactions.
-- SSL-ready architecture for future deployments.
+SafeSeat is built with privacy in mind:
+- **Local Persistence**: User data is handled securely with local state management.
+- **Secure Transaction UX**: Designed to follow best practices for financial interactions.
+- **Modern Standards**: Prepared for SSL-secured environments and modern web APIs.
 
 ---
-*Developed as part of the Workshop Agile Project.*
+*Architected and developed as part of the Workshop Agile initiative.*
