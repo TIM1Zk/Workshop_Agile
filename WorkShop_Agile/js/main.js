@@ -82,7 +82,8 @@ function validateName(name) {
 
 function validateEmail(email) {
     if (!email || !email.trim()) return 'ต้องไม่เป็นค่าว่าง';
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (/[ก-๙]/.test(email)) return 'ห้ามใช้ภาษาไทยในอีเมล (ใช้ได้เฉพาะภาษาอังกฤษ ตัวเลข และสัญลักษณ์)';
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) return 'ต้องเป็นรูปแบบมาตรฐาน email ที่ถูกต้อง';
     return null;
 }
