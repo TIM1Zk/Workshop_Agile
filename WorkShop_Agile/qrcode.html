@@ -112,7 +112,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const amount = urlParams.get('amount') || '1250';
+            const amount = urlParams.get('amount') || localStorage.getItem('lastTopupAmount') || '1250';
             const display = document.getElementById('qr-amount-display');
             if (display) {
                 display.textContent = `฿${parseFloat(amount).toLocaleString(undefined, { minimumFractionDigits: 2 })}`;

@@ -206,7 +206,7 @@ function goToPayment() {
     
     // Pass the topup amount to next page
     localStorage.setItem('lastTopupAmount', AppState.selectedAmount);
-    window.location.href = 'qrcode.html';
+    window.location.href = `qrcode.html?amount=${AppState.selectedAmount}`;
 }
 
 async function doTopup() {
