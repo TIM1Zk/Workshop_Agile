@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เติมเงิน - SafeSeat</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <header class="topbar" id="mainTopbar">
+        <div class="topbar-logo" onclick="window.location.href='profile.html'">
+            <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
+        </div>
+        <nav class="topbar-nav">
+            <a id="nav-profile" href="profile.html">โปรไฟล์</a>
+            <a id="nav-topup" href="topup.html" class="active">เติมเงิน</a>
+        </nav>
+        <div class="topbar-actions">
+            <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
+        </div>
+    </header>
+
+    <div id="screen-topup" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
+      <div class="dash-layout">
+        <div class="dash-main">
+          <div class="topup-layout">
+            <div>
+              <div class="section-heading">เติมเงิน (Top-up)</div>
+              <p class="section-sub">เลือกจำนวนเงินที่ต้องการเติมเข้า SafeSeat Wallet</p>
+              
+              <div style="font-weight: 700; margin-bottom: 12px; font-size: 0.9rem;">เลือกจำนวนเงิน</div>
+              <div class="amount-grid">
+                <div class="amount-btn" onclick="selectAmount(100, this)">100</div>
+                <div class="amount-btn" onclick="selectAmount(300, this)">300</div>
+                <div class="amount-btn selected" onclick="selectAmount(500, this)">500</div>
+                <div class="amount-btn" onclick="selectAmount(1000, this)">1,000</div>
+                <div class="amount-btn" onclick="selectAmount(2000, this)">2,000</div>
+                <div class="amount-btn" onclick="selectAmount(5000, this)">5,000</div>
+              </div>
+              
+              <div style="font-weight: 700; margin-bottom: 12px; font-size: 0.9rem;">ช่องทางการชำระเงิน</div>
+              <div class="payment-option selected" id="pay-promptpay">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div class="payment-logo" style="background: linear-gradient(135deg, #3b5bdb, #7950f2);">PP</div>
+                    <div>
+                       <div style="font-weight: 600; font-size: 0.9rem;">PromptPay QR Code</div>
+                       <div style="font-size: 0.75rem; color: var(--text-secondary);">ชำระเงินง่ายๆ ด้วยรหัส QR</div>
+                    </div>
+                </div>
+                <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary);"></div>
+                </div>
+              </div>
+            </div>
+            
+            <aside>
+              <div class="card" style="position: sticky; top: 88px;">
+                <h3 style="margin-bottom: 16px; font-size: 1.1rem;">สรุปการเติมเงิน</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem;">
+                    <span style="color: var(--text-secondary);">จำนวนเงินที่เลือก</span>
+                    <span id="summary-amount-display" style="font-weight: 600;">฿500.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.9rem;">
+                    <span style="color: var(--text-secondary);">ค่าธรรมเนียม</span>
+                    <span style="color: var(--success); font-weight: 600;">ฟรี</span>
+                </div>
+                <hr style="border: none; border-top: 1px solid var(--border); margin: 16px 0;">
+                <div id="summary-total" style="font-weight: 800; font-size: 1.25rem; color: white; margin-bottom: 24px;">
+                    ยอดหลังเติมเงิน: ฿1,750.00
+                </div>
+                <button class="btn btn-accent btn-full btn-lg" onclick="doTopup()">ยืนยันการชำระเงิน →</button>
+                <div style="text-align: center; margin-top: 16px; font-size: 0.75rem; color: var(--text-muted);">
+                    🔒 ธุรกรรมปลอดภัย ผ่านการเข้ารหัส SSL 256-bit
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

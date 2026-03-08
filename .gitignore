@@ -1,0 +1,10 @@
+# Common ignores
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+
+# Project specific ignores
+.gemini/
+brain/
+tmp/

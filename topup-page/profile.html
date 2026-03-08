@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โปรไฟล์ - SafeSeat</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <header class="topbar" id="mainTopbar">
+        <div class="topbar-logo" onclick="window.location.href='profile.html'">
+            <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
+        </div>
+        <nav class="topbar-nav">
+            <a id="nav-profile" href="profile.html" class="active">โปรไฟล์</a>
+            <a id="nav-topup" href="topup.html">เติมเงิน</a>
+        </nav>
+        <div class="topbar-actions">
+            <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
+        </div>
+    </header>
+
+    <div id="screen-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
+      <div class="dash-layout">
+        <div class="dash-sidebar">
+          <div class="profile-mini">
+            <div class="avatar-sm">👤</div>
+            <div>
+              <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
+              <div class="profile-role">ผู้ใช้งานทั่วไป</div>
+              <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px;" onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
+            </div>
+          </div>
+          
+          <div class="menu-item active" style="background: var(--surface2);">
+            <div class="menu-item-left">
+              <div class="menu-item-icon" style="background: rgba(59, 91, 219, 0.1); color: var(--primary);">🏠</div>
+              <div class="menu-item-title">แดชบอร์ด</div>
+            </div>
+          </div>
+          
+          <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
+            <div class="menu-item-left">
+              <div class="menu-item-icon" style="background: rgba(121, 80, 242, 0.1); color: var(--accent);">💳</div>
+              <div class="menu-item-title">SafeSeat Wallet</div>
+            </div>
+          </a>
+        </div>
+        
+        <div class="dash-main">
+          <div class="wallet-card">
+            <div class="wallet-label">ยอดเงินคงเหลือใน Wallet</div>
+            <div class="wallet-balance">฿ 1,250.00</div>
+            <div style="margin-top: 16px;">
+                <button class="btn btn-primary" onclick="window.location.href='topup.html'" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">+ เติมเงินตอนนี้</button>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3 style="margin-bottom: 20px;">กิจกรรมล่าสุด</h3>
+            <div style="color: var(--text-secondary); text-align: center; padding: 40px;">
+                ไม่มีกิจกรรมล่าสุดในขณะนี้
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

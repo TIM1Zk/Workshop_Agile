@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แก้ไขโปรไฟล์ - SafeSeat</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <header class="topbar" id="mainTopbar">
+        <div class="topbar-logo" onclick="window.location.href='profile.html'">
+            <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
+        </div>
+        <nav class="topbar-nav">
+            <a id="nav-profile" href="profile.html" class="active">โปรไฟล์</a>
+            <a id="nav-topup" href="topup.html">เติมเงิน</a>
+        </nav>
+        <div class="topbar-actions">
+            <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
+        </div>
+    </header>
+
+    <div id="screen-edit-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
+      <div class="dash-layout" style="justify-content: center;">
+        <div class="dash-main" style="max-width: 600px;">
+          <div class="card">
+            <div class="section-heading">แก้ไขข้อมูลส่วนตัว</div>
+            <p class="section-sub" style="margin-bottom: 32px;">จัดการข้อมูลบัญชีของคุณเพื่อให้เป็นปัจจุบันอยู่เสมอ</p>
+            
+            <div class="form-group">
+                <label class="form-label">ชื่อ-นามสกุล<span class="req">*</span></label>
+                <input type="text" class="form-input" id="editName" value="นายวุฒิชัย ดวงขี่หวา" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">อีเมล</label>
+                <input type="email" class="form-input" id="editEmail" placeholder="example@email.com" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">เบอร์มือถือ<span class="req">*</span></label>
+                <input type="tel" class="form-input" id="editPhone" value="081-234-5678" />
+            </div>
+            
+            <div style="display: flex; gap: 12px; margin-top: 24px;">
+                <button class="btn btn-primary btn-full" onclick="updateProfile()">บันทึกการเปลี่ยนแปลง</button>
+                <button class="btn btn-ghost btn-full" onclick="window.location.href='profile.html'">ยกเลิก</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

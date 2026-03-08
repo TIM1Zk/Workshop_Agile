@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สมัครสมาชิก - SafeSeat</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div id="screen-register" class="screen active fade-in" style="display:flex; flex-direction:column; align-items:center; background:var(--bg-main); padding:80px 24px 60px; min-height: 100vh;">
+        <div style="width:100%; max-width:560px;">
+            <a href="login.html" class="back-btn" style="text-decoration: none;">← กลับ</a>
+            
+            <div class="steps-row">
+                <div class="step-item">
+                    <div class="step-dot active">1</div>
+                    <div class="step-label active">ข้อมูลบัญชี</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-dot pending">2</div>
+                    <div class="step-label">ตั้งค่าโปรไฟล์</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="section-heading">สร้างบัญชีผู้ใช้</div>
+                <p class="section-sub" style="margin-bottom: 32px;">ขั้นตอนการรักษาสิทธิ์และการเข้าใช้งานระบบ</p>
+                
+                <div class="form-group">
+                    <label class="form-label">เบอร์มือถือ<span class="req">*</span></label>
+                    <input type="tel" class="form-input" placeholder="081-234-5678" />
+                </div>
+                
+                <button class="btn btn-primary btn-full btn-lg" style="margin-top: 12px;">ดำเนินการต่อ →</button>
+                
+                <div style="text-align: center; margin-top: 24px; font-size: 0.9rem; color: var(--text-secondary);">
+                    มีบัญชีอยู่แล้ว? <a href="login.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">เข้าสู่ระบบ</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
