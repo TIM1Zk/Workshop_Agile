@@ -573,6 +573,114 @@ body {
     font-size: 0.85rem;
 }
 
+/* Form Section */
+.form-section {
+    margin-bottom: 32px;
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.form-section-icon {
+    font-size: 1.1rem;
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Header Box */
+.header-box {
+    background: rgba(59, 91, 219, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+}
+
+.header-box-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--surface2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-box-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: white;
+}
+
+.header-box-sub {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* Gear Specification */
+.gear-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.gear-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gear-btn:hover {
+    background: var(--surface3);
+    border-color: var(--text-muted);
+}
+
+.gear-btn.active {
+    background: rgba(250, 176, 5, 0.05);
+    border: 2px solid var(--warning);
+}
+
+.gear-btn-icon {
+    font-size: 1.25rem;
+}
+
+.gear-btn-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.gear-btn.active .gear-btn-label {
+    color: var(--text-main);
+}
+
+/* Registration Steps (from previous) */
 @media (max-width: 992px) {
     .login-layout {
         flex-direction: column;
@@ -586,5 +694,11 @@ body {
     }
     .dash-layout {
         flex-direction: column;
+    }
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+    .gear-grid {
+        grid-template-columns: 1fr;
     }
 }

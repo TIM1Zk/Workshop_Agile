@@ -28,9 +28,41 @@
     </header>
 
     <div id="screen-edit-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
-      <div class="dash-layout" style="justify-content: center;">
-        <div class="dash-main" style="max-width: 600px;">
-          <div class="card">
+      <div class="dash-layout">
+        <div class="dash-sidebar">
+          <div class="profile-mini">
+            <div class="avatar-sm">👤</div>
+            <div>
+              <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
+              <div class="profile-role">ผู้ใช้งานทั่วไป</div>
+              <div style="font-size: 11px; color: var(--primary); font-weight: 700;">แก้ไขโปรไฟล์</div>
+            </div>
+          </div>
+          
+          <a href="profile.html" class="menu-item" style="text-decoration: none; color: inherit;">
+            <div class="menu-item-left">
+              <div class="menu-item-icon" style="background: rgba(59, 91, 219, 0.1); color: var(--primary);">🏠</div>
+              <div class="menu-item-title">แดชบอร์ด</div>
+            </div>
+          </a>
+
+          <div class="menu-item" onclick="window.location.href='Add_new_car.html'" style="cursor: pointer;">
+            <div class="menu-item-left">
+              <div class="menu-item-icon" style="background: rgba(250, 82, 82, 0.1); color: var(--error);">🚗</div>
+              <div class="menu-item-title">ยานพาหนะของฉัน</div>
+            </div>
+          </div>
+          
+          <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
+            <div class="menu-item-left">
+              <div class="menu-item-icon" style="background: rgba(121, 80, 242, 0.1); color: var(--accent);">💳</div>
+              <div class="menu-item-title">SafeSeat Wallet</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="dash-main">
+          <div class="card" style="max-width: 600px; margin: 0 auto;">
             <div class="section-heading">แก้ไขข้อมูลส่วนตัว</div>
             <p class="section-sub" style="margin-bottom: 32px;">จัดการข้อมูลบัญชีของคุณเพื่อให้เป็นปัจจุบันอยู่เสมอ</p>
             

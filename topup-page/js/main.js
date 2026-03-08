@@ -50,13 +50,20 @@ function updateProfile() {
 
 // --- Top-Up Actions ---
 function selectAmount(amount, element) {
-    AppState.selectedAmount = amount;
+    AppState.selectedAmount = parseFloat(amount) || 0;
     
-    // UI Update
+    // UI Update (if grid exists)
     const btns = document.querySelectorAll('.amount-btn');
-    btns.forEach(btn => btn.classList.remove('selected'));
-    element.classList.add('selected');
+    if (btns.length > 0) {
+        btns.forEach(btn => btn.classList.remove('selected'));
+        element.classList.add('selected');
+    }
     
+    updateTopupSummary();
+}
+
+function updateSummary(val) {
+    AppState.selectedAmount = parseFloat(val) || 0;
     updateTopupSummary();
 }
 
