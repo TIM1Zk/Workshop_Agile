@@ -9,28 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
     rel="stylesheet">
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
-  <!-- Lucide Icons -->
+  <!-- Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <style>
-    body {
-      background-color: #ffffff;
-      font-family: 'Inter', 'Kanit', sans-serif;
-    }
-
-    .topup-card {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 40px;
-      background: #ffffff;
-      border-radius: 32px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-    }
-  </style>
 </head>
 
 <body>
@@ -40,6 +24,10 @@
     <div class="topbar-logo" onclick="window.location.href='profile.html'">
       <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
     </div>
+    <nav class="topbar-nav">
+      <a id="nav-profile" href="profile.html">โปรไฟล์</a>
+      <a id="nav-topup" href="topup.html" class="active">เติมเงิน</a>
+    </nav>
     <div class="topbar-actions">
       <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
     </div>
@@ -47,17 +35,13 @@
 
   <div id="screen-topup" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
     <div class="dash-layout">
-      <!-- Sidebar -->
       <div class="dash-sidebar">
         <div class="profile-mini">
-          <div class="avatar-sm"
-            style="background: var(--surface2); color: var(--primary); display: flex; align-items: center; justify-content: center;">
-            <i data-lucide="user" style="width: 18px; height: 18px;"></i>
-          </div>
+          <div class="avatar-sm">👤</div>
           <div>
-            <div class="profile-name">นายวุฒิชัย ดวงยี่หวา</div>
+            <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
             <div class="profile-role">ผู้ใช้งานทั่วไป</div>
-            <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px; font-weight: 700;"
+            <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px;"
               onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
           </div>
         </div>
@@ -103,7 +87,7 @@
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <div style="font-weight: 700; color: var(--text-secondary); font-size: 0.95rem;">ยอดเงินคงเหลือปัจจุบัน
               </div>
-              <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main); margin: 0;">฿1,250.00</div>
+              <div id="summary-balance-display" style="font-size: 1.75rem; font-weight: 800; color: var(--text-main); margin: 0;">฿1,250.00</div>
             </div>
           </div>
 
@@ -129,12 +113,8 @@
                 PP</div>
               <div>
                 <div style="font-weight: 800; font-size: 1rem; color: var(--text-main);">PromptPay QR Code</div>
-                <div style="font-size: 0.85rem; color: var(--text-secondary);">สแกนเพื่อจ่ายทันที</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">สแกนเพื่อชำระเงิน</div>
               </div>
-            </div>
-            <div
-              style="width: 24px; height: 24px; border-radius: 50%; border: 3px solid var(--primary); display: flex; align-items: center; justify-content: center;">
-              <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary);"></div>
             </div>
           </div>
 
@@ -176,32 +156,6 @@
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
-  </script>
-  <script>
-    function updateSummary(val) {
-      const amount = parseFloat(val) || 0;
-      const total = 1250.00 + amount;
-
-      document.getElementById('summary-amount-display').textContent = `฿${amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-      document.getElementById('summary-total-display').textContent = `฿${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
-
-      const btn = document.getElementById('pay-button');
-      const err = document.getElementById('min-amount-error');
-
-      if (amount >= 300) {
-        btn.disabled = false;
-        err.style.display = 'none';
-      } else {
-        btn.disabled = true;
-        if (val.length > 0) err.style.display = 'block';
-        else err.style.display = 'none';
-      }
-    }
-
-    function goToPayment() {
-      const amount = document.getElementById('topup-amount-input').value;
-      window.location.href = `qrcode.html?amount=${amount}`;
-    }
   </script>
 </body>
 
