@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,162 +8,222 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body>
+
+<body style="background-color: white;">
     <div class="toast-container" id="toastContainer"></div>
 
     <header class="topbar" id="mainTopbar">
         <div class="topbar-logo" onclick="window.location.href='profile.html'">
             <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
         </div>
-        <nav class="topbar-nav">
-            <a id="nav-profile" href="profile.html">โปรไฟล์</a>
-            <a id="nav-topup" href="topup.html">เติมเงิน</a>
-        </nav>
         <div class="topbar-actions">
             <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
         </div>
     </header>
 
     <div id="screen-add-car" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
-      <div class="dash-layout">
-        <div class="dash-sidebar">
-          <div class="profile-mini">
-            <div class="avatar-sm">👤</div>
-            <div>
-              <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
-              <div class="profile-role">ผู้ใช้งานทั่วไป</div>
-              <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px;" onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
-            </div>
-          </div>
-          
-          <a href="profile.html" class="menu-item" style="text-decoration: none; color: inherit;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(59, 91, 219, 0.1); color: var(--primary);">🏠</div>
-              <div class="menu-item-title">แดชบอร์ด</div>
-            </div>
-          </a>
+        <div class="dash-layout">
+            <!-- Sidebar -->
+            <div class="dash-sidebar">
+                <div class="profile-mini">
+                    <div class="avatar-sm"
+                        style="background: var(--surface2); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+                        <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+                    </div>
+                    <div>
+                        <div class="profile-name">นายวุฒิชัย ดวงยี่หวา</div>
+                        <div class="profile-role">ผู้ใช้งานทั่วไป</div>
+                        <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px; font-weight: 700;"
+                            onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
+                    </div>
+                </div>
 
-          <div class="menu-item active" style="background: var(--surface2);">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(250, 82, 82, 0.1); color: var(--error);">🚗</div>
-              <div class="menu-item-title">ยานพาหนะของฉัน</div>
+                <a href="profile.html" class="menu-item" style="text-decoration: none; color: inherit;">
+                    <div class="menu-item-left">
+                        <div class="menu-item-icon"
+                            style="background: rgba(0, 194, 255, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+                            <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <div class="menu-item-title">แดชบอร์ด</div>
+                    </div>
+                </a>
+
+                <div class="menu-item active" style="background: rgba(0, 194, 255, 0.1);">
+                    <div class="menu-item-left">
+                        <div class="menu-item-icon"
+                            style="background: #fdf2f2; color: var(--error); display: flex; align-items: center; justify-content: center;">
+                            <i data-lucide="car" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <div class="menu-item-title">ยานพาหนะของฉัน</div>
+                    </div>
+                </div>
+
+                <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
+                    <div class="menu-item-left">
+                        <div class="menu-item-icon"
+                            style="background: #f5f3ff; color: #7c3aed; display: flex; align-items: center; justify-content: center;">
+                            <i data-lucide="credit-card" style="width: 18px; height: 18px;"></i>
+                        </div>
+                        <div class="menu-item-title">SafeSeat Wallet</div>
+                    </div>
+                </a>
             </div>
-          </div>
-          
-          <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(121, 80, 242, 0.1); color: var(--accent);">💳</div>
-              <div class="menu-item-title">SafeSeat Wallet</div>
+
+            <div class="dash-main">
+                <button class="back-btn" onclick="window.history.back()">← กลับ</button>
+
+                <div class="header-box"
+                    style="background: var(--surface1); border: 1px solid var(--border); border-radius: 20px; padding: 32px; display: flex; align-items: center; gap: 24px;">
+                    <div class="header-box-icon"
+                        style="background: white; width: 64px; height: 64px; border-radius: 16px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--primary)"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2">
+                            </path>
+                            <circle cx="7" cy="17" r="2"></circle>
+                            <path d="M9 17h6"></path>
+                            <circle cx="17" cy="17" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="header-box-title" style="font-weight: 800; color: var(--text-main);">
+                            เพิ่มข้อมูลยานพาหนะของคุณ</div>
+                        <div class="header-box-sub" style="color: var(--text-secondary); line-height: 1.6;">
+                            ตรวจสอบให้ถูกต้อง ข้อมูลนี้จะแสดงแก่ผู้ขับขี่แทน
+                            และช่วยให้ระบบจับคู่ผู้ขับขี่ที่เหมาะสมกับรถของคุณ</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 32px;">
+                    <div class="form-section">
+                        <div class="form-section-header" style="font-weight: 800; color: var(--text-main);">
+                            <span class="form-section-icon">🚗</span> ข้อมูลยานพาหนะ
+                        </div>
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label class="form-label">Car Brand <span class="req">*</span></label>
+                                <input type="text" class="form-input" placeholder="e.g. Porsche, Tesla, BMW">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Model <span class="req">*</span></label>
+                                <input type="text" class="form-input" placeholder="e.g. Taycan, Model S, M4">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header" style="font-weight: 800; color: var(--text-main);">
+                            <span class="form-section-icon">🆔</span> ข้อมูลทะเบียนรถ
+                        </div>
+                        <div class="input-grid">
+                            <div class="form-group">
+                                <label class="form-label">ทะเบียนรถ <span class="req">*</span></label>
+                                <input type="text" class="form-input" placeholder="กข-1234">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">สี <span class="req">*</span></label>
+                                <input type="text" class="form-input" placeholder="สีดำเข้ม">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header" style="font-weight: 800; color: var(--text-main);">
+                            <span class="form-section-icon">⚙️</span> สเปคเกียร์
+                        </div>
+                        <div
+                            style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px; font-weight: 600;">
+                            ประเภทเกียร์</div>
+                        <div class="gear-grid" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                            <style>
+                                .gear-btn {
+                                    background: var(--surface1);
+                                    border: 2px solid var(--border);
+                                    border-radius: 20px;
+                                    padding: 24px;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    gap: 12px;
+                                    cursor: pointer;
+                                    transition: all 0.2s;
+                                }
+
+                                .gear-btn:hover {
+                                    border-color: var(--primary);
+                                    background: white;
+                                }
+
+                                .gear-btn.active {
+                                    background: rgba(0, 194, 255, 0.05);
+                                    border-color: var(--primary);
+                                    color: var(--primary);
+                                }
+
+                                .gear-btn-icon {
+                                    font-size: 1.5rem;
+                                }
+
+                                .gear-btn-label {
+                                    font-weight: 700;
+                                    font-size: 0.95rem;
+                                }
+                            </style>
+                            <div class="gear-btn active" onclick="selectGear('automatic', this)">
+                                <span class="gear-btn-icon">🌐</span>
+                                <span class="gear-btn-label">Automatic</span>
+                            </div>
+                            <div class="gear-btn" onclick="selectGear('manual', this)">
+                                <span class="gear-btn-icon">🤚</span>
+                                <span class="gear-btn-label">Manual</span>
+                            </div>
+                            <div class="gear-btn" onclick="selectGear('electric', this)">
+                                <span class="gear-btn-icon">⚡</span>
+                                <span class="gear-btn-label">Electric</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: flex; justify-content: flex-end; gap: 16px; margin-top: 48px; border-top: 2px solid var(--border); padding-top: 32px;">
+                        <button class="btn btn-ghost" style="padding: 16px 32px;"
+                            onclick="window.history.back()">ยกเลิก</button>
+                        <button class="btn btn-primary" style="padding: 16px 40px;" onclick="saveCar()">
+                            บันทึกยานพาหนะใหม่ →
+                        </button>
+                    </div>
+                </div>
             </div>
-          </a>
         </div>
-        
-        <div class="dash-main">
-          <button class="back-btn" onclick="window.history.back()">← กลับ</button>
-          
-          <div class="header-box">
-            <div class="header-box-icon">🏎️</div>
-            <div>
-                <div class="header-box-title">เพิ่มข้อมูลยานพาหนะของคุณ</div>
-                <div class="header-box-sub">ตรวจสอบให้ถูกต้อง ข้อมูลนี้จะแสดงแก่ผู้ขับขี่แทน<br>และช่วยให้ระบบจับคู่ผู้ขับขี่ที่เหมาะสมกับรถของคุณ</div>
-            </div>
-          </div>
-          
-          <div class="card">
-            <div class="form-section">
-                <div class="form-section-header">
-                    <span class="form-section-icon">🚗</span> ข้อมูลยานพาหนะ
-                </div>
-                <div class="input-grid">
-                    <div class="form-group">
-                        <label class="form-label">Car Brand <span class="req">*</span></label>
-                        <input type="text" class="form-input" placeholder="e.g. Porsche, Tesla, BMW">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Model <span class="req">*</span></label>
-                        <input type="text" class="form-input" placeholder="e.g. Taycan, Model S, M4">
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <div class="form-section-header">
-                    <span class="form-section-icon">🆔</span> ข้อมูลทะเบียนรถ
-                </div>
-                <div class="input-grid">
-                    <div class="form-group">
-                        <label class="form-label">ทะเบียนรถ <span class="req">*</span></label>
-                        <input type="text" class="form-input" placeholder="กข-1234">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">สี <span class="req">*</span></label>
-                        <input type="text" class="form-input" placeholder="สีดำเข้ม">
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <div class="form-section-header">
-                    <span class="form-section-icon">⚙️</span> สเปคเกียร์
-                </div>
-                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">ประเภทเกียร์</div>
-                <div class="gear-grid">
-                    <div class="gear-btn active" onclick="selectGear('automatic', this)">
-                        <span class="gear-btn-icon">🌐</span>
-                        <span class="gear-btn-label">Automatic</span>
-                    </div>
-                    <div class="gear-btn" onclick="selectGear('manual', this)">
-                        <span class="gear-btn-icon">🤚</span>
-                        <span class="gear-btn-label">Manual</span>
-                    </div>
-                    <div class="gear-btn" onclick="selectGear('electric', this)">
-                        <span class="gear-btn-icon">⚡</span>
-                        <span class="gear-btn-label">Electric</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="display: flex; justify-content: flex-end; gap: 12px; margin-top: 40px;">
-                <button class="btn btn-ghost" onclick="window.history.back()">ยกเลิก</button>
-                <button class="btn btn-primary" style="background: #1a1b26; border: 1px solid var(--border);" onclick="saveCar()">
-                    💾 บันทึกยานพาหนะใหม่
-                </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <script src="js/main.js"></script>
     <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
         function selectGear(type, el) {
             document.querySelectorAll('.gear-btn').forEach(btn => btn.classList.remove('active'));
             el.classList.add('active');
             console.log('Selected gear:', type);
         }
-        
+
         function saveCar() {
-            // Mock save
-            const toast = document.createElement('div');
-            toast.className = 'toast show';
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.right = '20px';
-            toast.style.background = 'var(--success)';
-            toast.style.color = 'white';
-            toast.style.padding = '12px 24px';
-            toast.style.borderRadius = '8px';
-            toast.textContent = 'บันทึกข้อมูลยานพาหนะเรียบร้อยแล้ว';
-            document.body.appendChild(toast);
-            
+            showToast('บันทึกข้อมูลยานพาหนะเรียบร้อยแล้ว', 'success');
             setTimeout(() => {
                 window.location.href = 'profile.html';
             }, 1500);
         }
     </script>
 </body>
+
 </html>

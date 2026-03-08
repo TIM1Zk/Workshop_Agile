@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,71 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700&display=swap"
+        rel="stylesheet">
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            font-family: 'Inter', 'Kanit', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .login-hero {
+            background: linear-gradient(rgba(0, 194, 255, 0.7), rgba(0, 163, 255, 0.7)), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=1000') center/cover;
+        }
+
+        .login-hero-title {
+            color: white;
+            line-height: 1.2;
+            font-weight: 800;
+            font-size: 3.5rem;
+        }
+
+        .login-hero-title span {
+            color: #facc15;
+        }
+
+        .login-hero-sub {
+            color: white;
+            opacity: 1;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .login-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-weight: 700;
+            margin-top: 16px;
+        }
+
+        .login-feature-icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
+
 <body>
     <div class="toast-container" id="toastContainer"></div>
 
-    <div id="screen-login" class="screen active fade-in" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+    <div id="screen-login" class="screen active fade-in"
+        style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
         <div class="login-layout">
             <div class="login-hero">
                 <div class="login-hero-title">บริการผู้ขับขี่<br>แทน<span>ทั่วไทย</span></div>
-                <p class="login-hero-sub">SafeSeat ให้บริการผู้ขับขี่แทนที่ผ่านการตรวจสอบแล้ว เดินทางปลอดภัยทุกที่ทุกเวลา</p>
-                <div class="login-feature-list">
+                <p class="login-hero-sub" style="margin-top: 24px;">SafeSeat ให้บริการผู้ขับขี่แทนที่ผ่านการตรวจสอบแล้ว
+                    เดินทางปลอดภัยทุกที่ทุกเวลา</p>
+                <div class="login-feature-list" style="margin-top: 48px;">
                     <div class="login-feature">
                         <div class="login-feature-icon">✅</div>ผู้ขับขี่ผ่านการตรวจสอบประวัติ
                     </div>
@@ -30,8 +83,8 @@
             </div>
             <div class="login-card-wrap">
                 <div class="login-logo-wrap">
-                    <div class="login-logo-icon">🛡️</div>
-                    <div class="login-app-name">SAFE SEAT</div>
+                    <div class="login-logo-icon" style="font-size: 3rem;">🛡️</div>
+                    <div class="login-app-name" style="font-size: 2.25rem;">SAFE SEAT</div>
                 </div>
                 <div class="form-group">
                     <label class="form-label">เบอร์มือถือ<span class="req">*</span></label>
@@ -41,9 +94,13 @@
                     <label class="form-label">รหัสผ่าน<span class="req">*</span></label>
                     <input type="password" class="form-input" id="loginPass" placeholder="••••••••" />
                 </div>
-                <button class="btn btn-primary btn-full btn-lg" onclick="doLogin()">เข้าสู่ระบบ →</button>
-                <div style="text-align: center; margin-top: 24px; font-size: 0.9rem; color: var(--text-secondary);">
-                    ยังไม่มีบัญชี? <a href="Registration.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">สมัครสมาชิก</a>
+                <button class="btn btn-primary btn-full btn-lg"
+                    style="margin-top: 24px; padding: 20px; font-size: 1.25rem;" onclick="doLogin()">เข้าสู่ระบบเลย
+                    →</button>
+                <div
+                    style="text-align: center; margin-top: 32px; font-size: 1rem; color: var(--text-secondary); font-weight: 600;">
+                    ยังไม่มีบัญชี? <a href="Registration.html"
+                        style="color: var(--primary); text-decoration: none; font-weight: 800;">สมัครสมาชิกฟรี</a>
                 </div>
             </div>
         </div>
@@ -51,4 +108,5 @@
 
     <script src="js/main.js"></script>
 </body>
+
 </html>

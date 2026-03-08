@@ -1,85 +1,232 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>โปรไฟล์ - SafeSeat</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>โปรไฟล์ - SafeSeat</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    .premium-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(0, 194, 255, 0.1);
+    }
+
+    .premium-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .wallet-gradient {
+      background: linear-gradient(135deg, #00C2FF 0%, #007AFF 100%);
+      color: white !important;
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .tab-item {
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .tab-item.active {
+      color: var(--primary) !important;
+    }
+
+    .tab-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: -18px;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="toast-container" id="toastContainer"></div>
+  <div class="toast-container" id="toastContainer"></div>
 
-    <header class="topbar" id="mainTopbar">
-        <div class="topbar-logo" onclick="window.location.href='profile.html'">
-            <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
-        </div>
-        <nav class="topbar-nav">
-            <a id="nav-profile" href="profile.html" class="active">โปรไฟล์</a>
-            <a id="nav-topup" href="topup.html">เติมเงิน</a>
-        </nav>
-        <div class="topbar-actions">
-            <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
-        </div>
-    </header>
+  <header class="topbar" id="mainTopbar">
+    <div class="topbar-logo" onclick="window.location.href='profile.html'">
+      <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
+    </div>
+  </header>
 
-    <div id="screen-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
-      <div class="dash-layout">
-        <div class="dash-sidebar">
-          <div class="profile-mini">
-            <div class="avatar-sm">👤</div>
+  <div id="screen-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
+    <div class="dash-layout">
+      <!-- Sidebar -->
+      <div class="dash-sidebar">
+        <div class="profile-mini">
+          <div class="avatar-sm"
+            style="background: var(--surface2); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+            <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+          </div>
+          <div>
+            <div class="profile-name">นายวุฒิชัย ดวงยี่หวา</div>
+            <div class="profile-role">ผู้ใช้งานทั่วไป</div>
+            <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px; font-weight: 700;"
+              onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
+          </div>
+        </div>
+
+        <div class="menu-item active">
+          <div class="menu-item-left">
+            <div class="menu-item-icon"
+              style="background: rgba(0, 194, 255, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
+            </div>
+            <div class="menu-item-title">แดชบอร์ด</div>
+          </div>
+        </div>
+
+        <div class="menu-item" onclick="window.location.href='Add_new_car.html'" style="cursor: pointer;">
+          <div class="menu-item-left">
+            <div class="menu-item-icon"
+              style="background: #fdf2f2; color: var(--error); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="car" style="width: 18px; height: 18px;"></i>
+            </div>
+            <div class="menu-item-title">ยานพาหนะของฉัน</div>
+          </div>
+        </div>
+
+        <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
+          <div class="menu-item-left">
+            <div class="menu-item-icon"
+              style="background: #f5f3ff; color: #7c3aed; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="credit-card" style="width: 18px; height: 18px;"></i>
+            </div>
+            <div class="menu-item-title">SafeSeat Wallet</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="dash-main">
+        <!-- Header Section -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px;">
+          <div style="display: flex; align-items: center; gap: 20px;">
+            <div
+              style="background: white; width: 44px; height: 44px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s;"
+              onclick="window.history.back()">
+              <i data-lucide="arrow-left" style="width: 20px; height: 20px; color: var(--text-main);"></i>
+            </div>
+            <div
+              style="background: var(--surface2); padding: 8px 20px; border-radius: 12px; font-weight: 700; color: var(--text-secondary); font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase;">
+              User Profile</div>
+          </div>
+          <div style="color: var(--text-secondary); font-size: 0.9rem;">
+            <i data-lucide="calendar"
+              style="width: 16px; height: 16px; display: inline-block; vertical-align: middle; margin-right: 6px;"></i>
+            <span id="currentDate">-- -- ----</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Tabs -->
+        <div
+          style="display: flex; gap: 48px; margin-bottom: 40px; padding: 0 4px; border-bottom: 2px solid var(--border);">
+          <div class="tab-item active"
+            style="padding-bottom: 16px; font-weight: 700; font-size: 1.1rem; cursor: pointer;">
+            แดชบอร์ด
+          </div>
+          <div class="tab-item"
+            style="padding-bottom: 16px; font-weight: 700; font-size: 1.1rem; color: var(--text-muted); cursor: pointer;">
+            ประวัติรายการ
+          </div>
+        </div>
+
+        <!-- Dashboard Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+          <!-- Wallet Card (Premium) -->
+          <div class="premium-card wallet-gradient"
+            style="border-radius: 32px; padding: 40px; position: relative; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden;">
+            <div style="position: absolute; right: -20px; top: -20px; opacity: 0.15;">
+              <i data-lucide="wallet" style="width: 180px; height: 180px;"></i>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; position: relative;">
+              <div
+                style="background: rgba(255,255,255,0.2); width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
+              </div>
+              <div style="text-align: right;">
+                <div style="font-size: 0.9rem; opacity: 0.8; font-weight: 500;">SafeSeat Wallet</div>
+                <div style="font-size: 2.2rem; font-weight: 800; margin-top: 4px;">฿ 1,250.00</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; position: relative;">
+              <div
+                style="width: 8px; height: 8px; background: #34D399; border-radius: 50%; box-shadow: 0 0 12px #34D399;">
+              </div>
+              <div style="font-size: 0.85rem; font-weight: 600; opacity: 0.9;">พร้อมใช้งานสำหรับการเดินทาง</div>
+            </div>
+          </div>
+
+          <!-- Topup Card (Premium) -->
+          <div class="premium-card"
+            style="background: white; border-radius: 32px; padding: 40px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; border: 2px dashed var(--primary);"
+            onclick="window.location.href='topup.html'">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+              <div
+                style="background: rgba(0, 194, 255, 0.1); color: var(--primary); width: 64px; height: 64px; border-radius: 20px; display: flex; align-items: center; justify-content: center;">
+                <i data-lucide="plus-circle" style="width: 32px; height: 32px;"></i>
+              </div>
+            </div>
             <div>
-              <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
-              <div class="profile-role">ผู้ใช้งานทั่วไป</div>
-              <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px;" onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
+              <div style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">เติมเงินเข้าระบบ</div>
+              <div style="font-size: 0.95rem; color: var(--text-secondary); margin-top: 8px; font-weight: 500;">
+                เพิ่มเครดิตง่ายๆ ผ่าน QR Code หรือบัตรเครดิต</div>
+            </div>
+            <div
+              style="display: flex; align-items: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 0.9rem;">
+              เริ่มเติมเงิน <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
             </div>
           </div>
-          
-          <div class="menu-item active" style="background: var(--surface2);">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(59, 91, 219, 0.1); color: var(--primary);">🏠</div>
-              <div class="menu-item-title">แดชบอร์ด</div>
-            </div>
-          </div>
-
-          <div class="menu-item" onclick="window.location.href='Add_new_car.html'" style="cursor: pointer;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(250, 82, 82, 0.1); color: var(--error);">🚗</div>
-              <div class="menu-item-title">ยานพาหนะของฉัน</div>
-            </div>
-          </div>
-          
-          <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(121, 80, 242, 0.1); color: var(--accent);">💳</div>
-              <div class="menu-item-title">SafeSeat Wallet</div>
-            </div>
-          </a>
         </div>
-        
-        <div class="dash-main">
-          <div class="wallet-card">
-            <div class="wallet-label">ยอดเงินคงเหลือใน Wallet</div>
-            <div class="wallet-balance">฿ 1,250.00</div>
-            <div style="margin-top: 16px;">
-                <button class="btn btn-primary" onclick="window.location.href='topup.html'" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(4px);">+ เติมเงินตอนนี้</button>
-            </div>
+
+        <!-- Additional Info / Recent Activity Placeholder -->
+        <div
+          style="margin-top: 48px; background: var(--surface1); border-radius: 24px; padding: 32px; display: flex; align-items: center; gap: 24px;">
+          <div
+            style="background: white; width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--primary);">
+            <i data-lucide="info" style="width: 24px; height: 24px;"></i>
           </div>
-          
-          <div class="card">
-            <h3 style="margin-bottom: 20px;">กิจกรรมล่าสุด</h3>
-            <div style="color: var(--text-secondary); text-align: center; padding: 40px;">
-                ไม่มีกิจกรรมล่าสุดในขณะนี้
-            </div>
+          <div>
+            <div style="font-weight: 700; color: var(--text-main);">แนะนำ: เพิ่มรถให้พร้อมก่อนออกเดินทาง</div>
+            <div style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px;">
+              คุณยังสามารถเพิ่มรายละเอียดรถเพื่อร่วมเดินทางกับสมาชิกท่านอื่นได้ที่เมนู "ยานพาหนะของฉัน"</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Set Current Date
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDate').innerText = new Date().toLocaleDateString('th-TH', options);
+  </script>
 </body>
+
 </html>

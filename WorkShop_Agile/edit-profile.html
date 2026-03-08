@@ -1,95 +1,400 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>แก้ไขโปรไฟล์ - SafeSeat</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แก้ไขโปรไฟล์ - SafeSeat</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Inter', 'Kanit', sans-serif;
+    }
+
+    .profile-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 20px 40px;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .close-btn {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .close-btn:hover {
+      background: var(--surface2);
+    }
+
+    .profile-pill {
+      background: #E5E7EB;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #4B5563;
+    }
+
+    .avatar-section {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+    }
+
+    .avatar-circle {
+      width: 100px;
+      height: 100px;
+      background: #E0E7FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .camera-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #F3F4F6;
+      border: 2px solid white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #6B7280;
+      margin-bottom: 20px;
+    }
+
+    .input-mockup {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #E5E7EB;
+      border-radius: 12px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      background: white;
+      color: #111827;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .input-mockup:focus {
+      border-color: var(--primary);
+    }
+
+    .label-mockup {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #4B5563;
+      margin-bottom: 8px;
+    }
+
+    .car-card {
+      background: #E5E7EB;
+      border-radius: 24px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .car-icon-box {
+      width: 56px;
+      height: 56px;
+      background: #D1D5DB;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .car-details h4 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .car-details p {
+      margin: 4px 0 0;
+      font-size: 0.85rem;
+      color: #6B7280;
+    }
+
+    .car-dots {
+      position: absolute;
+      right: 20px;
+      top: 24px;
+      display: flex;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      background: #111827;
+      border-radius: 50%;
+    }
+
+    .dot.inactive {
+      background: #9CA3AF;
+    }
+
+    .remove-btn {
+      position: absolute;
+      bottom: -12px;
+      right: 12px;
+      background: #9CA3AF;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .save-btn {
+      width: 100%;
+      padding: 18px;
+      background: #1F2937;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 10px;
+    }
+
+    .save-btn:hover {
+      opacity: 0.9;
+    }
+
+    .add-car-btn {
+      background: #1F2937;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .select-mockup {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 20px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="toast-container" id="toastContainer"></div>
+  <div class="toast-container" id="toastContainer"></div>
 
-    <header class="topbar" id="mainTopbar">
-        <div class="topbar-logo" onclick="window.location.href='profile.html'">
-            <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
-        </div>
-        <nav class="topbar-nav">
-            <a id="nav-profile" href="profile.html" class="active">โปรไฟล์</a>
-            <a id="nav-topup" href="topup.html">เติมเงิน</a>
-        </nav>
-        <div class="topbar-actions">
-            <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
-        </div>
-    </header>
+  <header class="topbar" id="mainTopbar">
+    <div class="topbar-logo" onclick="window.location.href='profile.html'">
+      <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
+    </div>
+  </header>
 
-    <div id="screen-edit-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
-      <div class="dash-layout">
-        <div class="dash-sidebar">
-          <div class="profile-mini">
-            <div class="avatar-sm">👤</div>
-            <div>
-              <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
-              <div class="profile-role">ผู้ใช้งานทั่วไป</div>
-              <div style="font-size: 11px; color: var(--primary); font-weight: 700;">แก้ไขโปรไฟล์</div>
-            </div>
+  <div id="screen-edit-profile" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
+    <div class="dash-layout">
+      <!-- Sidebar -->
+      <div class="dash-sidebar">
+        <div class="profile-mini">
+          <div class="avatar-sm"
+            style="background: var(--surface2); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+            <i data-lucide="user" style="width: 18px; height: 18px;"></i>
           </div>
-          
-          <a href="profile.html" class="menu-item" style="text-decoration: none; color: inherit;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(59, 91, 219, 0.1); color: var(--primary);">🏠</div>
-              <div class="menu-item-title">แดชบอร์ด</div>
-            </div>
-          </a>
-
-          <div class="menu-item" onclick="window.location.href='Add_new_car.html'" style="cursor: pointer;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(250, 82, 82, 0.1); color: var(--error);">🚗</div>
-              <div class="menu-item-title">ยานพาหนะของฉัน</div>
-            </div>
+          <div>
+            <div class="profile-name">นายวุฒิชัย ดวงยี่หวา</div>
+            <div class="profile-role">ผู้ใช้งานทั่วไป</div>
+            <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px; font-weight: 700;"
+              onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
           </div>
-          
-          <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
-            <div class="menu-item-left">
-              <div class="menu-item-icon" style="background: rgba(121, 80, 242, 0.1); color: var(--accent);">💳</div>
-              <div class="menu-item-title">SafeSeat Wallet</div>
-            </div>
-          </a>
         </div>
 
-        <div class="dash-main">
-          <div class="card" style="max-width: 600px; margin: 0 auto;">
-            <div class="section-heading">แก้ไขข้อมูลส่วนตัว</div>
-            <p class="section-sub" style="margin-bottom: 32px;">จัดการข้อมูลบัญชีของคุณเพื่อให้เป็นปัจจุบันอยู่เสมอ</p>
-            
-            <div class="form-group">
-                <label class="form-label">ชื่อ-นามสกุล<span class="req">*</span></label>
-                <input type="text" class="form-input" id="editName" value="นายวุฒิชัย ดวงขี่หวา" />
+        <a href="profile.html" class="menu-item" style="text-decoration: none; color: inherit;">
+          <div class="menu-item-left">
+            <div class="menu-item-icon"
+              style="background: rgba(0, 194, 255, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
             </div>
+            <div class="menu-item-title">แดชบอร์ด</div>
+          </div>
+        </a>
 
-            <div class="form-group">
-                <label class="form-label">อีเมล</label>
-                <input type="email" class="form-input" id="editEmail" placeholder="example@email.com" />
+        <div class="menu-item" onclick="window.location.href='Add_new_car.html'"
+          style="text-decoration: none; color: inherit; cursor: pointer;">
+          <div class="menu-item-left">
+            <div class="menu-item-icon"
+              style="background: #fdf2f2; color: var(--error); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="car" style="width: 18px; height: 18px;"></i>
             </div>
+            <div class="menu-item-title">ยานพาหนะของฉัน</div>
+          </div>
+        </div>
 
-            <div class="form-group">
-                <label class="form-label">เบอร์มือถือ<span class="req">*</span></label>
-                <input type="tel" class="form-input" id="editPhone" value="081-234-5678" />
+        <a href="topup.html" class="menu-item" style="text-decoration: none; color: inherit;">
+          <div class="menu-item-left">
+            <div class="menu-item-icon"
+              style="background: #f5f3ff; color: #7c3aed; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="credit-card" style="width: 18px; height: 18px;"></i>
             </div>
-            
-            <div style="display: flex; gap: 12px; margin-top: 24px;">
-                <button class="btn btn-primary btn-full" onclick="updateProfile()">บันทึกการเปลี่ยนแปลง</button>
-                <button class="btn btn-ghost btn-full" onclick="window.location.href='profile.html'">ยกเลิก</button>
+            <div class="menu-item-title">SafeSeat Wallet</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="dash-main">
+        <div class="profile-container fade-in" style="padding: 0;">
+
+          <div class="avatar-section">
+            <div class="avatar-wrapper">
+              <div class="avatar-circle">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="#A5B4FC" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" />
+                </svg>
+              </div>
+              <div class="camera-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+              </div>
             </div>
           </div>
+
+          <div class="section-title">ข้อมูลส่วนตัว</div>
+
+          <div class="form-group-mockup">
+            <label class="label-mockup">ชื่อ-นามสกุล</label>
+            <input type="text" class="input-mockup" id="editName" value="นายวุฒิชัย ดวงยี่หวา">
+          </div>
+
+          <div class="form-group-mockup">
+            <label class="label-mockup">เบอร์มือถือ</label>
+            <input type="tel" class="input-mockup" id="editPhone" value="0873944046">
+          </div>
+
+          <div class="form-group-mockup">
+            <label class="label-mockup">อีเมล</label>
+            <input type="email" class="input-mockup" id="editEmail" value="wuttichai@gmail.com">
+          </div>
+
+          <div class="form-group-mockup">
+            <label class="label-mockup">เพศ</label>
+            <select class="input-mockup select-mockup" id="editGender">
+              <option value="" disabled>กรุณาเลือกเพศของคุณ</option>
+              <option value="male" selected>ชาย</option>
+              <option value="female">หญิง</option>
+              <option value="other">อื่นๆ</option>
+            </select>
+          </div>
+
+          <div class="form-group-mockup">
+            <label class="label-mockup">ที่อยู่ตั้งต้น</label>
+            <input type="text" class="input-mockup" id="editAddress" placeholder="โปรดระบุที่อยู่หลักของคุณ">
+          </div>
+
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-top: 32px; margin-bottom: 20px;">
+            <div class="section-title" style="margin-bottom: 0;">ยานพาหนะของฉัน</div>
+            <button class="add-car-btn" onclick="window.location.href='Add_new_car.html'">+ Add Car</button>
+          </div>
+
+          <div class="car-card">
+            <div class="car-icon-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2">
+                <rect x="2" y="10" width="20" height="8" rx="2" />
+                <path d="M7 10l2-5h6l2 5" />
+                <circle cx="7" cy="18" r="2" />
+                <circle cx="17" cy="18" r="2" />
+              </svg>
+            </div>
+            <div class="car-details">
+              <h4>Tesla Model 3</h4>
+              <p>สีเทาเข้ม • ABC-1234</p>
+            </div>
+            <div class="car-dots">
+              <div class="dot"></div>
+              <div class="dot inactive"></div>
+            </div>
+            <div class="remove-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+              Remove Car
+            </div>
+          </div>
+
+          <button class="save-btn" onclick="updateProfile()">บันทึกการแก้ไข</button>
         </div>
       </div>
     </div>
+  </div>
 
-    <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
 </body>
+
 </html>

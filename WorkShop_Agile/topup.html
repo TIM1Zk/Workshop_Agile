@@ -9,10 +9,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700&display=swap"
     rel="stylesheet">
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-family: 'Inter', 'Kanit', sans-serif;
+    }
+
+    .topup-card {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px;
+      background: #ffffff;
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    }
+  </style>
 </head>
 
 <body>
@@ -22,10 +40,6 @@
     <div class="topbar-logo" onclick="window.location.href='profile.html'">
       <div class="logo-icon">🛡️</div> Safe<span>Seat</span>
     </div>
-    <nav class="topbar-nav">
-      <a id="nav-profile" href="profile.html">โปรไฟล์</a>
-      <a id="nav-topup" href="topup.html" class="active">เติมเงิน</a>
-    </nav>
     <div class="topbar-actions">
       <button class="btn btn-ghost btn-sm" onclick="logout()">ออกจากระบบ</button>
     </div>
@@ -33,104 +47,125 @@
 
   <div id="screen-topup" class="screen fade-in" style="padding-top:100px; min-height: 100vh;">
     <div class="dash-layout">
+      <!-- Sidebar -->
       <div class="dash-sidebar">
         <div class="profile-mini">
-          <div class="avatar-sm">👤</div>
+          <div class="avatar-sm"
+            style="background: var(--surface2); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+            <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+          </div>
           <div>
-            <div class="profile-name">นายวุฒิชัย ดวงขี่หวา</div>
+            <div class="profile-name">นายวุฒิชัย ดวงยี่หวา</div>
             <div class="profile-role">ผู้ใช้งานทั่วไป</div>
-            <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px;"
+            <div style="font-size: 11px; color: var(--primary); cursor: pointer; margin-top: 4px; font-weight: 700;"
               onclick="window.location.href='edit-profile.html'">แก้ไขโปรไฟล์</div>
           </div>
         </div>
 
         <a href="profile.html" class="menu-item" style="text-decoration: none; color: inherit;">
           <div class="menu-item-left">
-            <div class="menu-item-icon" style="background: rgba(59, 91, 219, 0.1); color: var(--primary);">🏠</div>
+            <div class="menu-item-icon"
+              style="background: rgba(0, 194, 255, 0.1); color: var(--primary); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="layout-dashboard" style="width: 18px; height: 18px;"></i>
+            </div>
             <div class="menu-item-title">แดชบอร์ด</div>
           </div>
         </a>
 
-        <div class="menu-item" onclick="window.location.href='Add_new_car.html'"
-          style="text-decoration: none; color: inherit;">
+        <div class="menu-item" onclick="window.location.href='Add_new_car.html'" style="cursor: pointer;">
           <div class="menu-item-left">
-            <div class="menu-item-icon" style="background: rgba(250, 82, 82, 0.1); color: var(--error);">🚗</div>
+            <div class="menu-item-icon"
+              style="background: #fdf2f2; color: var(--error); display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="car" style="width: 18px; height: 18px;"></i>
+            </div>
             <div class="menu-item-title">ยานพาหนะของฉัน</div>
           </div>
         </div>
 
-        <a href="topup.html" class="menu-item active"
-          style="text-decoration: none; color: inherit; background: var(--surface2);">
+        <a href="topup.html" class="menu-item active" style="text-decoration: none; color: inherit;">
           <div class="menu-item-left">
-            <div class="menu-item-icon" style="background: rgba(121, 80, 242, 0.1); color: var(--accent);">💳</div>
+            <div class="menu-item-icon"
+              style="background: #f5f3ff; color: #7c3aed; display: flex; align-items: center; justify-content: center;">
+              <i data-lucide="credit-card" style="width: 18px; height: 18px;"></i>
+            </div>
             <div class="menu-item-title">SafeSeat Wallet</div>
           </div>
         </a>
       </div>
 
       <div class="dash-main">
-        <div style="max-width: 600px; margin: 0 auto;">
-          <div class="card">
-            <div class="section-heading" style="text-align: center; margin-bottom: 32px;">เติมเงิน (Top-up)</div>
+        <div class="topup-card">
+          <div class="section-heading" style="text-align: center; margin-bottom: 32px; font-weight: 800;">เติมเงิน
+            (Top-up)</div>
 
-            <div class="wallet-card"
-              style="padding: 24px; margin-bottom: 32px; background: linear-gradient(135deg, var(--surface2), var(--surface3));">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div class="wallet-label" style="margin-bottom: 0;">ยอดเงินคงเหลือปัจจุบัน</div>
-                <div class="wallet-balance" id="summary-balance-display" style="font-size: 1.5rem;">฿1,250.00</div>
+          <div
+            style="background: var(--surface1); border: 2px solid var(--border); border-radius: 20px; padding: 24px; margin-bottom: 32px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div style="font-weight: 700; color: var(--text-secondary); font-size: 0.95rem;">ยอดเงินคงเหลือปัจจุบัน
+              </div>
+              <div style="font-size: 1.75rem; font-weight: 800; color: var(--text-main); margin: 0;">฿1,250.00</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 8px;">
+            <label class="form-label"
+              style="font-weight: 800; color: var(--text-main); margin-bottom: 12px; text-align: center;">ระบุจำนวนเงินที่ต้องการเติม</label>
+            <input type="number" class="form-input" id="topup-amount-input" placeholder="0.00" min="300"
+              style="font-size: 1.5rem; font-weight: 800; padding: 20px; text-align: center; border-radius: 20px;"
+              oninput="updateSummary(this.value)">
+          </div>
+          <div id="min-amount-error"
+            style="color: var(--error); font-size: 0.9rem; font-weight: 600; text-align: center; margin-bottom: 24px; display: none;">
+            ⚠️ จำนวนเงินขั้นต่ำคือ ฿300.00
+          </div>
+
+          <div style="font-weight: 800; margin-bottom: 16px; font-size: 1rem; color: var(--text-main);">
+            เลือกช่องทางการชำระเงิน</div>
+          <div class="payment-option selected" id="pay-promptpay"
+            style="margin-bottom: 32px; border-radius: 20px; padding: 20px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <div class="payment-logo"
+                style="background: linear-gradient(135deg, #00C2FF, #00A3FF); color: white; width: 56px; height: 56px; border-radius: 12px; font-size: 1.25rem;">
+                PP</div>
+              <div>
+                <div style="font-weight: 800; font-size: 1rem; color: var(--text-main);">PromptPay QR Code</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary);">สแกนเพื่อจ่ายทันที</div>
               </div>
             </div>
-
-            <div class="form-group" style="margin-bottom: 8px;">
-              <label class="form-label"
-                style="font-weight: 700; color: white; margin-bottom: 12px;">ระบุจำนวนเงินที่ต้องการเติม</label>
-              <input type="number" class="form-input" id="topup-amount-input" placeholder="0.00" min="300"
-                style="font-size: 1.25rem; padding: 16px; text-align: center;" oninput="updateSummary(this.value)">
+            <div
+              style="width: 24px; height: 24px; border-radius: 50%; border: 3px solid var(--primary); display: flex; align-items: center; justify-content: center;">
+              <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--primary);"></div>
             </div>
-            <div id="min-amount-error"
-              style="color: var(--error); font-size: 0.8rem; text-align: center; margin-bottom: 24px; display: none;">
-              ⚠️ จำนวนเงินขั้นต่ำคือ ฿300.00
-            </div>
+          </div>
 
-            <div style="font-weight: 700; margin-bottom: 16px; font-size: 0.95rem;">เลือกช่องทางการชำระเงิน</div>
-            <div class="payment-option selected" id="pay-promptpay" style="margin-bottom: 32px;">
-              <div style="display: flex; align-items: center; gap: 12px;">
-                <div class="payment-logo" style="background: linear-gradient(135deg, #3b5bdb, #7950f2);">PP</div>
-                <div>
-                  <div style="font-weight: 600; font-size: 0.9rem;">PromptPay QR Code</div>
-                </div>
-              </div>
-              <div
-                style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center;">
-                <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--primary);"></div>
-              </div>
-            </div>
+          <hr style="border: none; border-top: 2px solid var(--border); margin: 40px 0;">
 
-            <hr style="border: none; border-top: 1px solid var(--border); margin: 32px 0;">
-
-            <div style="background: var(--surface2); border-radius: 16px; padding: 20px; margin-bottom: 32px;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem;">
-                <span style="color: var(--text-secondary);">จำนวนเงินที่ระบุ</span>
-                <span id="summary-amount-display" style="font-weight: 600; color: white;">฿0.00</span>
-              </div>
-              <div style="display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.95rem;">
-                <span style="color: var(--text-secondary);">ค่าธรรมเนียม</span>
-                <span style="color: var(--success); font-weight: 600;">ฟรี</span>
-              </div>
-              <div
-                style="display: flex; justify-content: space-between; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--border); font-weight: 800; font-size: 1.1rem; color: var(--primary);">
-                <span>ยอดหลังเติมเงิน</span>
-                <span id="summary-total-display">฿1,250.00</span>
-              </div>
+          <div
+            style="background: var(--surface1); border-radius: 20px; padding: 24px; margin-bottom: 40px; border: 1px solid var(--border);">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+              <span style="color: var(--text-secondary); font-weight: 600;">จำนวนเงินที่ระบุ</span>
+              <span id="summary-amount-display" style="font-weight: 800; color: var(--text-main);">฿0.00</span>
             </div>
-            
-            <button class="btn btn-primary btn-full" id="pay-button" style="padding: 16px; font-size: 1.1rem; border-radius: 12px; margin-top: 8px;" onclick="goToPayment()" disabled>
-              ยืนยันการชำระเงิน →
-            </button>
-
-            <div style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 24px;">
-              🔒 ธุรกรรมปลอดภัย ผ่านการเข้ารหัส SSL 256-bit
+            <div style="display: flex; justify-content: space-between; margin-bottom: 12px;">
+              <span style="color: var(--text-secondary); font-weight: 600;">ค่าธรรมเนียม</span>
+              <span style="color: var(--success); font-weight: 800;">ฟรี</span>
             </div>
+            <div
+              style="display: flex; justify-content: space-between; margin-top: 16px; padding-top: 16px; border-top: 2px dashed var(--border);">
+              <span style="font-weight: 800; color: var(--text-main);">ยอดหลังเติมเงิน</span>
+              <span id="summary-total-display"
+                style="font-weight: 900; color: var(--primary); font-size: 1.25rem;">฿1,250.00</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-full" id="pay-button"
+            style="padding: 18px; font-size: 1.15rem; border-radius: 16px;" onclick="goToPayment()" disabled>
+            ยืนยันการชำระเงิน →
+          </button>
+
+          <div
+            style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 32px; font-weight: 600;">
+            🔒 ธุรกรรมปลอดภัย ผ่านการเข้ารหัส SSL 256-bit
           </div>
         </div>
       </div>
@@ -138,6 +173,36 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+  <script>
+    function updateSummary(val) {
+      const amount = parseFloat(val) || 0;
+      const total = 1250.00 + amount;
+
+      document.getElementById('summary-amount-display').textContent = `฿${amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+      document.getElementById('summary-total-display').textContent = `฿${total.toLocaleString(undefined, { minimumFractionDigits: 2 })}`;
+
+      const btn = document.getElementById('pay-button');
+      const err = document.getElementById('min-amount-error');
+
+      if (amount >= 300) {
+        btn.disabled = false;
+        err.style.display = 'none';
+      } else {
+        btn.disabled = true;
+        if (val.length > 0) err.style.display = 'block';
+        else err.style.display = 'none';
+      }
+    }
+
+    function goToPayment() {
+      const amount = document.getElementById('topup-amount-input').value;
+      window.location.href = `qrcode.html?amount=${amount}`;
+    }
+  </script>
 </body>
 
 </html>
