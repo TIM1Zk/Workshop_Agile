@@ -111,11 +111,11 @@
                         <div class="input-grid">
                             <div class="form-group">
                                 <label class="form-label">Car Brand <span class="req">*</span></label>
-                                <input type="text" class="form-input" placeholder="e.g. Porsche, Tesla, BMW">
+                                <input type="text" class="form-input" id="carBrand" placeholder="e.g. Porsche, Tesla, BMW">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Model <span class="req">*</span></label>
-                                <input type="text" class="form-input" placeholder="e.g. Taycan, Model S, M4">
+                                <input type="text" class="form-input" id="carModel" placeholder="e.g. Taycan, Model S, M4">
                             </div>
                         </div>
                     </div>
@@ -127,11 +127,11 @@
                         <div class="input-grid">
                             <div class="form-group">
                                 <label class="form-label">ทะเบียนรถ <span class="req">*</span></label>
-                                <input type="text" class="form-input" placeholder="กข-1234">
+                                <input type="text" class="form-input" id="carPlate" placeholder="กข-1234">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">สี <span class="req">*</span></label>
-                                <input type="text" class="form-input" placeholder="สีดำเข้ม">
+                                <input type="text" class="form-input" id="carColor" placeholder="สีดำเข้ม">
                             </div>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                         <div
                             style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px; font-weight: 600;">
                             ประเภทเกียร์</div>
-                        <div class="gear-grid" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                        <div class="gear-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
                             <style>
                                 .gear-btn {
                                     background: var(--surface1);
@@ -194,7 +194,7 @@
                     </div>
 
                     <div
-                        style="display: flex; justify-content: flex-end; gap: 16px; margin-top: 48px; border-top: 2px solid var(--border); padding-top: 32px;">
+                        style="display: flex; justify-content: flex-end; align-items: center; gap: 16px; margin-top: 48px; border-top: 2px solid var(--border); padding-top: 32px;">
                         <button class="btn btn-ghost" style="padding: 16px 32px;"
                             onclick="window.history.back()">ยกเลิก</button>
                         <button class="btn btn-primary" style="padding: 16px 40px;" onclick="saveCar()">
@@ -217,7 +217,77 @@
             console.log('Selected gear:', type);
         }
 
+        function validateCarBrand(brand) {
+            if (!brand || !brand.trim()) return 'ต้องไม่เป็นค่าว่าง';
+            if (/\s/.test(brand)) return 'ต้องไม่เว้นวรรค หรือช่องว่าง';
+            if (brand.length < 3 || brand.length > 50) return 'ต้องมีความยาว 3 - 50 ตัวอักษร';
+            if (!/^[a-zA-Zก-๙]+$/.test(brand)) return 'ต้องเป็นภาษาไทยหรืออังกฤษเท่านั้น';
+            return null;
+        }
+
+        function validateCarModel(model) {
+            if (!model || !model.trim()) return 'ต้องไม่เป็นค่าว่าง';
+            if (/\s/.test(model)) return 'ต้องไม่เว้นวรรค หรือช่องว่าง';
+            if (model.length < 3 || model.length > 50) return 'ต้องมีความยาว 3 - 50 ตัวอักษร';
+            if (!/^[a-zA-Zก-๙]+$/.test(model)) return 'ต้องเป็นภาษาไทยหรืออังกฤษเท่านั้น';
+            return null;
+        }
+
+        function validateCarPlate(plate) {
+            if (!plate || !plate.trim()) return 'ต้องไม่เป็นค่าว่าง';
+            if (plate.length < 2 || plate.length > 10) return 'ต้องมีความยาว 2 - 10 ตัวอักษร';
+            if (!/^[a-zA-Zก-๙0-9\-]+$/.test(plate)) return 'ต้องเป็นภาษาไทยหรืออังกฤษและตัวเลขเท่านั้น (สามารถมีตัวอักษรพิเศษ - ได้)';
+            return null;
+        }
+
+        function validateCarColor(color) {
+            if (!color || !color.trim()) return 'ต้องไม่เป็นค่าว่าง';
+            if (/\s/.test(color)) return 'ต้องไม่เว้นวรรค หรือช่องว่าง';
+            if (color.length < 2 || color.length > 20) return 'ต้องมีความยาว 2 - 20 ตัวอักษร';
+            if (!/^[a-zA-Zก-๙]+$/.test(color)) return 'ต้องเป็นภาษาไทยหรืออังกฤษเท่านั้น';
+            return null;
+        }
+
         function saveCar() {
+            clearErrors();
+            const brandInput = document.getElementById('carBrand');
+            const modelInput = document.getElementById('carModel');
+            const plateInput = document.getElementById('carPlate');
+            const colorInput = document.getElementById('carColor');
+
+            const brand = brandInput.value;
+            const model = modelInput.value;
+            const plate = plateInput.value;
+            const color = colorInput.value;
+
+            const brandError = validateCarBrand(brand);
+            if (brandError) {
+                brandInput.classList.add('input-error');
+                showToast('ชื่อแบรนด์: ' + brandError, 'error');
+                return;
+            }
+
+            const modelError = validateCarModel(model);
+            if (modelError) {
+                modelInput.classList.add('input-error');
+                showToast('โมเดลรถ: ' + modelError, 'error');
+                return;
+            }
+
+            const plateError = validateCarPlate(plate);
+            if (plateError) {
+                plateInput.classList.add('input-error');
+                showToast('ข้อมูลทะเบียนรถ: ' + plateError, 'error');
+                return;
+            }
+
+            const colorError = validateCarColor(color);
+            if (colorError) {
+                colorInput.classList.add('input-error');
+                showToast('สีรถ: ' + colorError, 'error');
+                return;
+            }
+
             showToast('บันทึกข้อมูลยานพาหนะเรียบร้อยแล้ว', 'success');
             setTimeout(() => {
                 window.location.href = 'profile.html';
