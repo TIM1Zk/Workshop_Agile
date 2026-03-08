@@ -12,6 +12,7 @@
     <style>
         body {
             font-family: 'Inter', 'Kanit', sans-serif;
+            background-color: #ffffff;
         }
 
         .dot-active {
@@ -21,130 +22,176 @@
         .dot-inactive {
             background-color: #E5E7EB;
         }
+
+        .input-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2;
+        }
     </style>
 </head>
 
-<body class="bg-[#1c1c1c] flex items-center justify-center min-h-screen p-4">
+<body class="min-h-screen flex flex-col">
 
-    <div id="screen1"
-        class="bg-white w-full max-w-[400px] rounded-xl shadow-2xl p-8 relative min-h-[700px] flex flex-col">
-        <div class="flex flex-col items-center mb-10">
-            <button class="absolute left-6 top-8 text-2xl">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <div class="flex gap-2 mt-2">
-                <div class="w-3 h-3 rounded-full dot-active"></div>
-                <div class="w-3 h-3 rounded-full dot-inactive"></div>
+    <header class="w-full p-6 flex justify-between items-center max-w-7xl mx-auto">
+        <button onclick="toggleScreen()" class="text-gray-400 hover:text-black transition flex items-center gap-2">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <div class="flex gap-3">
+            <div id="dot1" class="w-8 h-1.5 rounded-full dot-active transition-all"></div>
+            <div id="dot2" class="w-8 h-1.5 rounded-full dot-inactive transition-all"></div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-6 py-12">
+        <div id="screen1" class="w-full max-w-xl transition-all duration-500">
+            <div class="text-center md:text-left mb-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Step 1 of 2</h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">สร้างบัญชีของคุณ</h1>
+                <p class="text-gray-500 text-lg leading-relaxed">
+                    กรุณาป้อนหมายเลขโทรศัพท์มือถือของคุณเพื่อเริ่มต้นเราจะส่งรหัสยืนยันให้คุณเพื่อความปลอดภัยบัญชีของคุณ
+                </p>
             </div>
-        </div>
 
-        <div class="flex-grow">
-            <h2 class="text-gray-500 font-bold text-lg uppercase tracking-wider mb-1">Step 1 of 2</h2>
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">สร้างบัญชีผู้ใช้ของคุณ</h1>
-            <p class="text-gray-400 text-sm leading-relaxed mb-8">
-                กรุณาป้อนหมายเลขโทรศัพท์มือถือของคุณเพื่อเริ่มต้น
-                เราจะส่งรหัสยืนยันให้คุณเพื่อรักษาความปลอดภัยบัญชีของคุณ
-            </p>
-
-            <div class="mb-6">
-                <label class="block text-gray-700 font-semibold mb-2">เบอร์มือถือ</label>
-                <input type="text" placeholder="081-234-5678"
-                    class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400">
-            </div>
-        </div>
-
-        <div class="mt-auto">
-            <p class="text-[10px] text-gray-400 text-center mb-4 leading-normal">
-                เมื่อดำเนินการต่อหมายถึงคุณยอมรับ<span class="text-cyan-400">ข้อกำหนดในการให้บริการ</span>และ<span
-                    class="text-cyan-400">นโยบายความเป็นส่วนตัว</span>ของเรา
-            </p>
-            <button onclick="toggleScreen()"
-                class="w-full bg-[#2d2d2d] text-white font-semibold py-4 rounded-xl hover:bg-black transition">
-                ดำเนินการต่อ
-            </button>
-        </div>
-    </div>
-
-    <div id="screen2"
-        class="hidden bg-white w-full max-w-[400px] rounded-xl shadow-2xl p-8 relative min-h-[700px] flex flex-col">
-        <div class="flex flex-col items-center mb-10">
-            <button onclick="toggleScreen()" class="absolute left-6 top-8 text-2xl">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-            </button>
-            <div class="flex gap-2 mt-2">
-                <div class="w-3 h-3 rounded-full dot-inactive"></div>
-                <div class="w-3 h-3 rounded-full dot-active"></div>
-            </div>
-        </div>
-
-        <div class="flex-grow">
-            <h2 class="text-gray-500 font-bold text-lg uppercase tracking-wider mb-1">Final Step</h2>
-            <h1 class="text-2xl font-bold text-gray-800 mb-2">ตั้งค่าโปรไฟล์ของคุณ</h1>
-            <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                นี่เป็นเพียงรายละเอียดเพิ่มเติมเล็กน้อยที่จะช่วยให้คุณเดินทางได้อย่างปลอดภัย
-            </p>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-gray-700 font-semibold mb-1">ชื่อ-นามสกุล</label>
-                    <input type="text" placeholder="โปรดกรอกชื่อของคุณ"
-                        class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-1 focus:ring-gray-300">
+            <div class="space-y-6">
+                <div class="text-left">
+                    <label class="block text-gray-700 font-bold mb-3 text-lg">เบอร์โทรศัพท์มือถือ</label>
+                    <input type="text" id="phoneInput" placeholder="0812345678" inputmode="numeric" maxlength="10"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                        class="w-full border-2 border-gray-100 bg-gray-50 rounded-2xl py-5 px-6 text-xl focus:outline-none focus:border-blue-400 focus:bg-white transition-all shadow-sm">
+                    <p id="phoneError" class="text-red-500 text-sm mt-2 hidden">กรุณากรอกเบอร์โทรศัพท์ให้ถูกต้อง (10
+                        หลัก)</p>
                 </div>
-                <div>
-                    <label class="block text-gray-700 font-semibold mb-1">เพศ</label>
-                    <select
-                        class="w-full border border-gray-200 rounded-lg py-3 px-4 text-gray-400 appearance-none bg-no-repeat bg-right pr-10 focus:outline-none">
-                        <option>กรุณาเลือกเพศของคุณ</option>
+
+                <button onclick="validateStep1()"
+                    class="w-full bg-[#1c1c1c] text-white font-bold py-5 rounded-2xl text-lg hover:bg-blue-600 hover:shadow-xl transform transition-all active:scale-[0.98]">
+                    ดำเนินการต่อ
+                </button>
+            </div>
+        </div>
+
+        <div id="screen2" class="hidden w-full max-w-3xl transition-all duration-500">
+            <div class="text-center md:text-left mb-10">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Final Step</h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">ตั้งค่าโปรไฟล์ของคุณ</h1>
+                <p class="text-gray-500 text-lg">นี่เป็นเพียงรายละเอียดเพิ่มเติมเล็กน้อยที่จะช่วยให้คุณเดินทางปลอดภัย
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-bold text-lg">ชื่อ-นามสกุล</label>
+                    <input type="text" id="fullName" placeholder="ชื่อจริง นามสกุล"
+                        class="w-full border-2 border-gray-100 bg-gray-50 rounded-xl py-4 px-5 text-lg focus:outline-none focus:border-blue-400 focus:bg-white transition-all">
+                    <p id="nameError" class="text-red-500 text-sm hidden">กรุณากรอกชื่อ-นามสกุลให้ถูกต้อง</p>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-bold text-lg">เพศ</label>
+                    <select id="gender"
+                        class="w-full border-2 border-gray-100 bg-gray-50 rounded-xl py-4 px-5 text-lg focus:outline-none focus:border-blue-400 focus:bg-white transition-all appearance-none">
+                        <option value="">ระบุเพศ</option>
+                        <option value="male">ชาย</option>
+                        <option value="female">หญิง</option>
+                        <option value="other">ไม่ระบุ</option>
                     </select>
+                    <p id="genderError" class="text-red-500 text-sm hidden">กรุณาเลือกเพศของคุณ</p>
                 </div>
-                <div>
-                    <label class="block text-gray-700 font-semibold mb-1">อีเมล (ไม่บังคับ)</label>
-                    <input type="email" placeholder="example@gmail.com"
-                        class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none">
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-bold text-lg">อีเมล</label>
+                    <input type="email" id="email" placeholder="name@example.com"
+                        class="w-full border-2 border-gray-100 bg-gray-50 rounded-xl py-4 px-5 text-lg focus:outline-none focus:border-blue-400 focus:bg-white transition-all">
+                    <p id="emailError" class="text-red-500 text-sm hidden">รูปแบบอีเมลไม่ถูกต้อง</p>
                 </div>
-                <div>
-                    <label class="block text-gray-700 font-semibold mb-1">รหัสผ่าน*</label>
-                    <input type="password" placeholder="password"
-                        class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none">
+                <div class="space-y-2">
+                    <label class="block text-gray-700 font-bold text-lg">รหัสผ่าน</label>
+                    <input type="password" id="password" placeholder="••••••••"
+                        class="w-full border-2 border-gray-100 bg-gray-50 rounded-xl py-4 px-5 text-lg focus:outline-none focus:border-blue-400 focus:bg-white transition-all">
+                    <p id="passwordError" class="text-red-500 text-sm hidden">รหัสผ่านต้องมี 8 ตัวอักษรขึ้นไปและมีตัวเลข
+                    </p>
                 </div>
             </div>
 
-            <div class="flex items-start gap-3 mt-6">
-                <div class="mt-1">
-                    <div class="w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
-                        <div class="w-2.5 h-2.5 bg-gray-600 rounded-full"></div>
-                    </div>
-                </div>
-                <div>
-                    <p class="text-sm font-bold text-gray-700">ยอมรับข้อกำหนดและนโยบาย</p>
-                    <p class="text-xs text-gray-400">กรุณาอ่านก่อนยอมรับ</p>
-                </div>
+            <div
+                class="mt-12 flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-gray-100">
+                <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" id="consent"
+                        class="w-6 h-6 rounded-md border-2 border-gray-300 text-blue-500">
+                    <span class="text-gray-600 group-hover:text-black transition">ฉันยอมรับนโยบายข้อมูลส่วนบุคคล</span>
+                </label>
+                <button onclick="submitForm()"
+                    class="w-full md:w-auto px-12 bg-black text-white font-bold py-5 rounded-2xl text-lg hover:bg-gray-800 shadow-lg hover:shadow-gray-400 transition-all">
+                    เริ่มใช้งานเลย
+                </button>
             </div>
         </div>
-
-        <div class="mt-8">
-            <p class="text-[10px] text-gray-400 text-center mb-4 leading-normal">
-                เมื่อดำเนินการต่อหมายถึงคุณยอมรับ<span class="text-cyan-400">ข้อกำหนดในการให้บริการ</span>และ<span
-                    class="text-cyan-400">นโยบายความเป็นส่วนตัว</span>ของเรา
-            </p>
-            <button class="w-full bg-[#2d2d2d] text-white font-semibold py-4 rounded-xl hover:bg-black transition">
-                เริ่มใช้งานเลย
-            </button>
-        </div>
-    </div>
+    </main>
 
     <script>
+        const patterns = {
+            phone: /^0[689]\d{8}$/,
+            email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+            name: /^[a-zA-Z\u0E00-\u0E7F\s]{3,50}$/,
+            password: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+        };
+
         function toggleScreen() {
             const s1 = document.getElementById('screen1');
             const s2 = document.getElementById('screen2');
+            const d1 = document.getElementById('dot1');
+            const d2 = document.getElementById('dot2');
             s1.classList.toggle('hidden');
             s2.classList.toggle('hidden');
+            const isStep2 = s1.classList.contains('hidden');
+            d1.className = `w-8 h-1.5 rounded-full transition-all ${isStep2 ? 'dot-inactive' : 'dot-active'}`;
+            d2.className = `w-8 h-1.5 rounded-full transition-all ${isStep2 ? 'dot-active' : 'dot-inactive'}`;
+        }
+
+        function validateStep1() {
+            const input = document.getElementById('phoneInput');
+            const error = document.getElementById('phoneError');
+            if (patterns.phone.test(input.value)) {
+                input.classList.remove('input-error');
+                error.classList.add('hidden');
+                toggleScreen();
+            } else {
+                input.classList.add('input-error');
+                error.classList.remove('hidden');
+            }
+        }
+
+        function submitForm() {
+            const inputs = {
+                name: { el: document.getElementById('fullName'), err: document.getElementById('nameError'), pat: patterns.name },
+                gender: { el: document.getElementById('gender'), err: document.getElementById('genderError'), val: document.getElementById('gender').value !== "" },
+                email: { el: document.getElementById('email'), err: document.getElementById('emailError'), pat: patterns.email },
+                pass: { el: document.getElementById('password'), err: document.getElementById('passwordError'), pat: patterns.password }
+            };
+
+            let isValid = true;
+
+            // Loop through inputs to validate
+            for (let key in inputs) {
+                const item = inputs[key];
+                const isFieldValid = item.pat ? item.pat.test(item.el.value) : item.val;
+
+                if (!isFieldValid) {
+                    item.el.classList.add('input-error');
+                    item.err.classList.remove('hidden');
+                    isValid = false;
+                } else {
+                    item.el.classList.remove('input-error');
+                    item.err.classList.add('hidden');
+                }
+            }
+
+            if (!document.getElementById('consent').checked) {
+                alert("กรุณายอมรับนโยบายข้อมูลส่วนบุคคล");
+                isValid = false;
+            }
+
+            if (isValid) alert("ลงทะเบียนสำเร็จ!");
         }
     </script>
 </body>
