@@ -1,53 +1,152 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สมัครสมาชิก - SafeSeat</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-    <div class="toast-container" id="toastContainer"></div>
+    <title>User Register</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Kanit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Kanit', sans-serif;
+        }
 
-    <div id="screen-register" class="screen active fade-in" style="display:flex; flex-direction:column; align-items:center; background:var(--bg-main); padding:80px 24px 60px; min-height: 100vh;">
-        <div style="width:100%; max-width:560px;">
-            <a href="login.html" class="back-btn" style="text-decoration: none;">← กลับ</a>
-            
-            <div class="steps-row">
-                <div class="step-item">
-                    <div class="step-dot active">1</div>
-                    <div class="step-label active">ข้อมูลบัญชี</div>
-                </div>
-                <div class="step-line"></div>
-                <div class="step-item">
-                    <div class="step-dot pending">2</div>
-                    <div class="step-label">ตั้งค่าโปรไฟล์</div>
-                </div>
+        .dot-active {
+            background-color: #00C2FF;
+        }
+
+        .dot-inactive {
+            background-color: #E5E7EB;
+        }
+    </style>
+</head>
+
+<body class="bg-[#1c1c1c] flex items-center justify-center min-h-screen p-4">
+
+    <div id="screen1"
+        class="bg-white w-full max-w-[400px] rounded-xl shadow-2xl p-8 relative min-h-[700px] flex flex-col">
+        <div class="flex flex-col items-center mb-10">
+            <button class="absolute left-6 top-8 text-2xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div class="flex gap-2 mt-2">
+                <div class="w-3 h-3 rounded-full dot-active"></div>
+                <div class="w-3 h-3 rounded-full dot-inactive"></div>
             </div>
-            
-            <div class="card">
-                <div class="section-heading">สร้างบัญชีผู้ใช้</div>
-                <p class="section-sub" style="margin-bottom: 32px;">ขั้นตอนการรักษาสิทธิ์และการเข้าใช้งานระบบ</p>
-                
-                <div class="form-group">
-                    <label class="form-label">เบอร์มือถือ<span class="req">*</span></label>
-                    <input type="tel" class="form-input" placeholder="081-234-5678" />
-                </div>
-                
-                <button class="btn btn-primary btn-full btn-lg" style="margin-top: 12px;">ดำเนินการต่อ →</button>
-                
-                <div style="text-align: center; margin-top: 24px; font-size: 0.9rem; color: var(--text-secondary);">
-                    มีบัญชีอยู่แล้ว? <a href="login.html" style="color: var(--primary); text-decoration: none; font-weight: 600;">เข้าสู่ระบบ</a>
-                </div>
+        </div>
+
+        <div class="flex-grow">
+            <h2 class="text-gray-500 font-bold text-lg uppercase tracking-wider mb-1">Step 1 of 2</h2>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">สร้างบัญชีผู้ใช้ของคุณ</h1>
+            <p class="text-gray-400 text-sm leading-relaxed mb-8">
+                กรุณาป้อนหมายเลขโทรศัพท์มือถือของคุณเพื่อเริ่มต้น
+                เราจะส่งรหัสยืนยันให้คุณเพื่อรักษาความปลอดภัยบัญชีของคุณ
+            </p>
+
+            <div class="mb-6">
+                <label class="block text-gray-700 font-semibold mb-2">เบอร์มือถือ</label>
+                <input type="text" placeholder="081-234-5678"
+                    class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-400">
             </div>
+        </div>
+
+        <div class="mt-auto">
+            <p class="text-[10px] text-gray-400 text-center mb-4 leading-normal">
+                เมื่อดำเนินการต่อหมายถึงคุณยอมรับ<span class="text-cyan-400">ข้อกำหนดในการให้บริการ</span>และ<span
+                    class="text-cyan-400">นโยบายความเป็นส่วนตัว</span>ของเรา
+            </p>
+            <button onclick="toggleScreen()"
+                class="w-full bg-[#2d2d2d] text-white font-semibold py-4 rounded-xl hover:bg-black transition">
+                ดำเนินการต่อ
+            </button>
         </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <div id="screen2"
+        class="hidden bg-white w-full max-w-[400px] rounded-xl shadow-2xl p-8 relative min-h-[700px] flex flex-col">
+        <div class="flex flex-col items-center mb-10">
+            <button onclick="toggleScreen()" class="absolute left-6 top-8 text-2xl">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div class="flex gap-2 mt-2">
+                <div class="w-3 h-3 rounded-full dot-inactive"></div>
+                <div class="w-3 h-3 rounded-full dot-active"></div>
+            </div>
+        </div>
+
+        <div class="flex-grow">
+            <h2 class="text-gray-500 font-bold text-lg uppercase tracking-wider mb-1">Final Step</h2>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">ตั้งค่าโปรไฟล์ของคุณ</h1>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                นี่เป็นเพียงรายละเอียดเพิ่มเติมเล็กน้อยที่จะช่วยให้คุณเดินทางได้อย่างปลอดภัย
+            </p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-1">ชื่อ-นามสกุล</label>
+                    <input type="text" placeholder="โปรดกรอกชื่อของคุณ"
+                        class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none focus:ring-1 focus:ring-gray-300">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-1">เพศ</label>
+                    <select
+                        class="w-full border border-gray-200 rounded-lg py-3 px-4 text-gray-400 appearance-none bg-no-repeat bg-right pr-10 focus:outline-none">
+                        <option>กรุณาเลือกเพศของคุณ</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-1">อีเมล (ไม่บังคับ)</label>
+                    <input type="email" placeholder="example@gmail.com"
+                        class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-gray-700 font-semibold mb-1">รหัสผ่าน*</label>
+                    <input type="password" placeholder="password"
+                        class="w-full border border-gray-200 rounded-lg py-3 px-4 focus:outline-none">
+                </div>
+            </div>
+
+            <div class="flex items-start gap-3 mt-6">
+                <div class="mt-1">
+                    <div class="w-5 h-5 rounded-full border-2 border-gray-400 flex items-center justify-center">
+                        <div class="w-2.5 h-2.5 bg-gray-600 rounded-full"></div>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-gray-700">ยอมรับข้อกำหนดและนโยบาย</p>
+                    <p class="text-xs text-gray-400">กรุณาอ่านก่อนยอมรับ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <p class="text-[10px] text-gray-400 text-center mb-4 leading-normal">
+                เมื่อดำเนินการต่อหมายถึงคุณยอมรับ<span class="text-cyan-400">ข้อกำหนดในการให้บริการ</span>และ<span
+                    class="text-cyan-400">นโยบายความเป็นส่วนตัว</span>ของเรา
+            </p>
+            <button class="w-full bg-[#2d2d2d] text-white font-semibold py-4 rounded-xl hover:bg-black transition">
+                เริ่มใช้งานเลย
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleScreen() {
+            const s1 = document.getElementById('screen1');
+            const s2 = document.getElementById('screen2');
+            s1.classList.toggle('hidden');
+            s2.classList.toggle('hidden');
+        }
+    </script>
 </body>
+
 </html>
